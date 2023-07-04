@@ -1,0 +1,43 @@
+2023-07-04 14:25:37.211 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:35:08.040 [main] INFO  com.youtube.adfree.YouTubeAdFree - txtVideoTitle: Phonics Song with TWO Words - A For Apple - ABC Alphabet Songs
+2023-07-04 14:35:08.042 [main] WARN  com.youtube.adfree.YouTubeAdFree - log.warn
+2023-07-04 14:35:08.043 [main] FATAL com.youtube.adfree.YouTubeAdFree - log.fatal
+2023-07-04 14:35:08.043 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:38:02.284 [main] INFO  com.youtube.adfree.YouTubeAdFree - txtVideoTitle: The Seed Song - What Do Seeds Need?
+2023-07-04 14:38:02.286 [main] WARN  com.youtube.adfree.YouTubeAdFree - log.warn
+2023-07-04 14:38:02.286 [main] FATAL com.youtube.adfree.YouTubeAdFree - log.fatal
+2023-07-04 14:38:02.287 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:38:11.181 [main] INFO  com.youtube.adfree.YouTubeAdFree - txtVideoTitle: Living Things | Science Song for Kids | Elementary Life Science
+2023-07-04 14:38:11.183 [main] WARN  com.youtube.adfree.YouTubeAdFree - log.warn
+2023-07-04 14:38:11.184 [main] FATAL com.youtube.adfree.YouTubeAdFree - log.fatal
+2023-07-04 14:38:11.184 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:38:41 [main] INFO  com.youtube.adfree.YouTubeAdFree - txtVideoTitle: Baby Loves Stargazing - Twinkle Twinkle Little Star
+2023-07-04 14:38:41 [main] WARN  com.youtube.adfree.YouTubeAdFree - log.warn
+2023-07-04 14:38:41 [main] FATAL com.youtube.adfree.YouTubeAdFree - log.fatal
+2023-07-04 14:38:41 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:38:58.595 [main] INFO  com.youtube.adfree.YouTubeAdFree - txtVideoTitle: ABC Song with ChuChu Toy Train
+2023-07-04 14:38:58.598 [main] WARN  com.youtube.adfree.YouTubeAdFree - log.warn
+2023-07-04 14:38:58.598 [main] FATAL com.youtube.adfree.YouTubeAdFree - log.fatal
+2023-07-04 14:38:58.599 [main] ERROR com.youtube.adfree.YouTubeAdFree - log.error
+2023-07-04 14:58:00.010 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: The Seed Song - What Do Seeds Need?
+2023-07-04 14:58:26.008 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 11
+2023-07-04 14:58:26.009 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 14:58:35.929 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 04-07-2023_14-58-35.png
+2023-07-04 15:00:52.331 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: Durood Ibrahim Song (Allah Humma Salli) + More   Islamic Songs For Kids Compilation I Nasheed
+2023-07-04 15:01:14.688 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 11
+2023-07-04 15:01:14.689 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 15:01:30.155 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 04-07-2023_15-01-29.png
+2023-07-04 15:01:33.084 [main] INFO  com.youtube.adfree.YouTubeAdFree - Title: YouTube
+2023-07-04 15:01:58.171 [main] WARN  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-01-33; Time now: 04-07-2023_15-01-58
+2023-07-04 15:02:23.267 [main] WARN  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-01-33; Time now: 04-07-2023_15-02-23
+2023-07-04 15:02:29.055 [main] WARN  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-01-33; Time now: 04-07-2023_15-02-29
+2023-07-04 15:02:29.090 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred
+2023-07-04 15:05:58.718 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: Living Things | Science Song for Kids | Elementary Life Science
+2023-07-04 15:06:02.557 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 11
+2023-07-04 15:06:02.557 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 15:06:13.614 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred
+2023-07-04 15:07:08.269 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: ABC Song with ChuChu Toy Train
+2023-07-04 15:07:12.110 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 11
+2023-07-04 15:07:12.110 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 15:07:23.547 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 04-07-2023_15-07-23.png
+2023-07-04 15:07:24.580 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred

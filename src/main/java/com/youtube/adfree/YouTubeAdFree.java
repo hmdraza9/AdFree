@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -19,23 +21,35 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class YoutTubeAdFree {
+public class YouTubeAdFree {
+	
+	Logger log = LogManager.getLogger(YouTubeAdFree.class);
+	static YouTubeAdFree yt = new YouTubeAdFree();
+	
+	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+				yt.freeYoutuber(yt, driver);
 		
+	}
+	
+	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) {
 		String txtVideoTitle = "";
 		try {
-			txtVideoTitle = readTextFile().get(0);
-			System.out.println("Loading video title from text file: "+txtVideoTitle);
+			ArrayList<String> tempList = new ArrayList<String>();
+			tempList = yt.readTextFile();
+			int tempInt = tempList.size();
+			txtVideoTitle = yt.readTextFile().get(tempInt/2+1);
+			log.info("Loading video title from text file: "+txtVideoTitle);
 		}
 		catch(Exception ex) {
 			System.out.println("Exception: "+ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
-			txtVideoTitle = tempList.get(tempInt/2);
-			System.out.println("Loading video title from code: "+txtVideoTitle);
+			txtVideoTitle = tempList.get(tempInt/2+1);
+			log.warn("Loading video title from code: "+txtVideoTitle);
 		}
-		
+		driver = new ChromeDriver();
 		String osName = System.getProperty("os.name");
 		String searchBoxXpath = "//input[@id='search']";
 		String firstVideoDuration = "//span[@class='ytp-time-duration']";
@@ -44,62 +58,64 @@ public class YoutTubeAdFree {
 		String searchResultFirst = "(//a[@id='video-title'])[1]";
 		String fullScreenVideo = "//button[contains(@title,'ull screen')]";
 		if (osName.toLowerCase().contains("window")) {
-			System.out.println("Running on operating system: " + osName);
+			log.info("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
-			System.out.println("Property set, 'webdriver.chrome.driver': "+System.getProperty("webdriver.chrome.driver"));
+			log.info("Property set, 'webdriver.chrome.driver': "+System.getProperty("webdriver.chrome.driver"));
 		}
-		
-		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 		try {
 			driver.manage().window().maximize();
 			driver.get("https://www.youtube.com");
 			Thread.sleep(5000);
-			ts(driver, printTime());
+			ts(driver, yt.printTime());
 			WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
 			searchBox.sendKeys(txtVideoTitle);
 			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
 			searchButton.click();
-//		WebDriverWait wait = new WebDriverWait(driver, 30);
 			driver.findElement(By.xpath(searchResultFirst)).click();
-			String txtDuration = driver.findElement(By.xpath(firstVideoDuration)).getText().trim();
-//		String txtDuration = driver.findElement(By.xpath(firstVideoDuration)).getAttribute("value").trim();
 			driver.findElement(By.xpath(fullScreenVideo)).click();
-			String txtTitle = driver.getTitle();
-			System.out.println("Current video title: "+txtTitle+"; Duration: "+txtDuration);
-			String startTime = printTime();
+			log.info("Title: "+driver.getTitle());
+			String startTime = yt.printTime();
 
 			for (int i = 0; i < 10000000; i++) {
 				if (driver.findElements(By.xpath(SkipAdButton)).size() > 0) {
 
-					ts(driver, Integer.toString(i)+"_"+printTime());
+					ts(driver, Integer.toString(i)+"_"+yt.printTime());
 					driver.findElement(By.xpath(SkipAdButton)).click();
-					System.out.println("Start time: "+startTime+"; Time now: "+printTime());
+					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
 
 				} else {
 					Thread.sleep(5000);
-					System.out.println("Start time: "+startTime+"; Time now: "+printTime());
+					log.warn("Start time: "+startTime+"; Time now: "+yt.printTime());
 				}
 			}
 
 			driver.quit();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
+			log.error("InterruptedException exception occurred");
 			e.printStackTrace();
 			driver.quit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			log.error("IOException exception occurred");
+			e.printStackTrace();
+			driver.quit();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("Some exception occurred");
 			e.printStackTrace();
 			driver.quit();
 		}
 		
 	}
 
-	public static ArrayList<String> readTextFile() {
+	public ArrayList<String> readTextFile() {
 		
 		ArrayList<String> lineList = new ArrayList<String>();
-		File file = new File("C:/Users/"+System.getProperty("user.name")+"/Desktop/YouTubeForKids.txt");
+		String tempFilePath = "C:/Users/"+System.getProperty("user.name")+"/Desktop/YouTubeForKids.txt";
+		File file = new File(tempFilePath);
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -112,7 +128,7 @@ public class YoutTubeAdFree {
 			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("IO Exception occurred!");
+			log.error("IOException exception occurred");
 		}
 		Collections.shuffle(lineList);
 		return lineList;
@@ -120,7 +136,7 @@ public class YoutTubeAdFree {
 	}
 	
 
-	public static String printTime() {
+	public String printTime() {
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
 		LocalDateTime now = LocalDateTime.now();
@@ -155,13 +171,13 @@ public class YoutTubeAdFree {
 	}
 
 
-	public static void ts(WebDriver driver, String name) throws IOException {
+	public void ts(WebDriver driver, String name) throws IOException {
 
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File("C:/all-screenshot/" + name + ".png");
 		FileUtils.copyFile(SrcFile, DestFile);
-		System.out.println("scr done! "+name + ".png");
+		log.info("scr done! "+name + ".png");
 	}
 
 

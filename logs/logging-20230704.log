@@ -1,0 +1,9 @@
+2023-07-04 15:32:33.395 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV
+2023-07-04 15:32:36.183 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 11
+2023-07-04 15:32:36.184 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 15:32:48.840 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 04-07-2023_15-32-48.png
+2023-07-04 15:32:53.873 [main] INFO  com.youtube.adfree.YouTubeAdFree - Title: Old MacDonald Had A Farm and Many More Nursery Rhymes for Children | Kids Songs by ChuChu TV - YouTube
+2023-07-04 15:32:54.843 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 0_04-07-2023_15-32-53.png
+2023-07-04 15:32:56.961 [main] INFO  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-32-53; Time now: 04-07-2023_15-32-56
+2023-07-04 15:33:03.386 [main] WARN  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-32-53; Time now: 04-07-2023_15-33-03
+2023-07-04 15:33:03.420 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred
