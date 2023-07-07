@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
 	<Properties>
-		<Property name="filename">./logs</Property>
+		<Property name="filename">C:/all-logs/logs</Property>
 	</Properties>
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">

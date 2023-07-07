@@ -7,3 +7,8 @@
 2023-07-04 15:32:56.961 [main] INFO  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-32-53; Time now: 04-07-2023_15-32-56
 2023-07-04 15:33:03.386 [main] WARN  com.youtube.adfree.YouTubeAdFree - Start time: 04-07-2023_15-32-53; Time now: 04-07-2023_15-33-03
 2023-07-04 15:33:03.420 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred
+2023-07-04 16:13:59.065 [main] INFO  com.youtube.adfree.YouTubeAdFree - Loading video title from text file: SCUBA Diving Egypt Red Sea - Underwater Video HD
+2023-07-04 16:14:13.179 [main] INFO  com.youtube.adfree.YouTubeAdFree - Running on operating system: Windows 10
+2023-07-04 16:14:13.179 [main] INFO  com.youtube.adfree.YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+2023-07-04 16:14:41.033 [main] INFO  com.youtube.adfree.YouTubeAdFree - scr done! 04-07-2023_16-14-29.png
+2023-07-04 16:14:58.270 [main] ERROR com.youtube.adfree.YouTubeAdFree - Some exception occurred

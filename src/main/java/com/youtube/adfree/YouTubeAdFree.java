@@ -15,6 +15,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -52,7 +54,6 @@ public class YouTubeAdFree {
 		driver = new ChromeDriver();
 		String osName = System.getProperty("os.name");
 		String searchBoxXpath = "//input[@id='search']";
-		String firstVideoDuration = "//span[@class='ytp-time-duration']";
 		String SkipAdButton = "//div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button";
 		String searchIcon = "//button[contains(@id,'search-icon')]";
 		String searchResultFirst = "(//a[@id='video-title'])[1]";
@@ -73,7 +74,18 @@ public class YouTubeAdFree {
 			searchBox.sendKeys(txtVideoTitle);
 			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
 			searchButton.click();
-			driver.findElement(By.xpath(searchResultFirst)).click();
+			try {
+				driver.findElement(By.xpath(searchResultFirst)).click();
+			} catch (NoSuchElementException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				searchButton.click();
+				JavascriptExecutor js = (JavascriptExecutor)driver;
+				js.executeScript("arguments[0].click();", searchButton);
+				log.info("Clicked using JavascriptExecutor");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath(searchResultFirst)).click();
+			}
 			driver.findElement(By.xpath(fullScreenVideo)).click();
 			log.info("Title: "+driver.getTitle());
 			String startTime = yt.printTime();
@@ -114,7 +126,7 @@ public class YouTubeAdFree {
 	public ArrayList<String> readTextFile() {
 		
 		ArrayList<String> lineList = new ArrayList<String>();
-		String tempFilePath = "C:/Users/"+System.getProperty("user.name")+"/Desktop/YouTubeForKids.txt";
+		String tempFilePath = "C:/Users/Hp/Desktop/YouTubeForKids.txt";
 		File file = new File(tempFilePath);
 		
 		try {
