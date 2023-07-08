@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class YouTubeAdFree {
 	
@@ -36,6 +38,9 @@ public class YouTubeAdFree {
 	}
 	
 	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) {
+		long curTime = System.currentTimeMillis();
+		ChromeOptions opt = new ChromeOptions();
+		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
 		String txtVideoTitle = "";
 		try {
 			ArrayList<String> tempList = new ArrayList<String>();
@@ -51,8 +56,9 @@ public class YouTubeAdFree {
 			txtVideoTitle = tempList.get(tempInt/2+1);
 			log.warn("Loading video title from code: "+txtVideoTitle);
 		}
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(opt);
 		String osName = System.getProperty("os.name");
+		String ytURL = "https://www.youtube.com";
 		String searchBoxXpath = "//input[@id='search']";
 		String SkipAdButton = "//div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button";
 		String searchIcon = "//button[contains(@id,'search-icon')]";
@@ -67,9 +73,9 @@ public class YouTubeAdFree {
 		
 		try {
 			driver.manage().window().maximize();
-			driver.get("https://www.youtube.com");
+			driver.get(ytURL);
 			Thread.sleep(5000);
-			ts(driver, yt.printTime());
+			ts(driver, yt.printTime()," Opening URL: "+ytURL);
 			WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
 			searchBox.sendKeys(txtVideoTitle);
 			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
@@ -93,14 +99,17 @@ public class YouTubeAdFree {
 			for (int i = 0; i < 10000000; i++) {
 				if (driver.findElements(By.xpath(SkipAdButton)).size() > 0) {
 
-					ts(driver, Integer.toString(i)+"_"+yt.printTime());
+					ts(driver, Integer.toString(i)+"_"+yt.printTime(), "Clicking 'Skip ad', count: "+(i+1));
 					driver.findElement(By.xpath(SkipAdButton)).click();
-					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
+//					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
 
 				} else {
 					Thread.sleep(5000);
-					log.warn("Start time: "+startTime+"; Time now: "+yt.printTime());
+					log.warn("Start time: "+startTime+"; Current time: "+yt.printTime());
 				}
+				if(i>0&&i%3==0)
+					log.info("Screen time: "+displayTime(curTime));
+
 			}
 
 			driver.quit();
@@ -150,9 +159,10 @@ public class YouTubeAdFree {
 
 	public String printTime() {
 
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy_HH-mm-ss");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d-MMM-yyyy_HH-mm-ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
+		
 
 	}
 
@@ -183,13 +193,42 @@ public class YouTubeAdFree {
 	}
 
 
-	public void ts(WebDriver driver, String name) throws IOException {
+	public void ts(WebDriver driver, String name, String message) throws IOException {
 
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File("C:/all-screenshot/" + name + ".png");
 		FileUtils.copyFile(SrcFile, DestFile);
-		log.info("scr done! "+name + ".png");
+		log.info(message+" scr name: "+name + ".png");
+	}
+	
+	public String displayTime(long startTime) {
+		String timeStringReturn = "";
+		long timeDiff = (System.currentTimeMillis() - startTime)/(1000*60);
+		
+//		if(timeDiff<=1) timeStringReturn = "1 min";
+//		else {
+//			if(timeDiff>1)
+//				timeStringReturn = timeDiff+" minutes";
+//		}
+		if(timeDiff/3600000>0) {
+			timeStringReturn = (timeDiff/3600000) + " hours; "+ timeStringReturn;
+			timeDiff = timeDiff/3600000;
+		}
+		
+		if(timeDiff/60000>0) {
+			timeStringReturn = (timeDiff/60000) + " minutes; "+ timeStringReturn;
+			timeDiff = timeDiff/60000;
+		}
+		
+		if(timeDiff/1000>0) {
+			timeStringReturn = (timeDiff/1000) + " seconds;";
+		}
+		
+		return timeStringReturn;
+		// mil to sec /1000
+		//mil to min /60000
+		//mil to hour /360000
 	}
 
 
