@@ -1,6 +1,5 @@
 package com.youtube.adfree;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -26,17 +25,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class YouTubeAdFree {
-	
+
 	Logger log = LogManager.getLogger(YouTubeAdFree.class);
 	static YouTubeAdFree yt = new YouTubeAdFree();
-	
+
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 				yt.freeYoutuber(yt, driver);
-		
+
 	}
-	
+
 	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) {
 		long curTime = System.currentTimeMillis();
 		ChromeOptions opt = new ChromeOptions();
@@ -46,15 +45,14 @@ public class YouTubeAdFree {
 			ArrayList<String> tempList = new ArrayList<String>();
 			tempList = yt.readTextFile();
 			int tempInt = tempList.size();
-			txtVideoTitle = yt.readTextFile().get(tempInt/2+1);
-			log.info("Loading video title from text file: "+txtVideoTitle);
-		}
-		catch(Exception ex) {
-			System.out.println("Exception: "+ex.getMessage());
+			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
+			log.info("Loading video title from text file: " + txtVideoTitle);
+		} catch (Exception ex) {
+			System.out.println("Exception: " + ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
-			txtVideoTitle = tempList.get(tempInt/2+1);
-			log.warn("Loading video title from code: "+txtVideoTitle);
+			txtVideoTitle = tempList.get(tempInt / 2 + 1);
+			log.warn("Loading video title from code: " + txtVideoTitle);
 		}
 		driver = new ChromeDriver(opt);
 		String osName = System.getProperty("os.name");
@@ -67,15 +65,15 @@ public class YouTubeAdFree {
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
-			log.info("Property set, 'webdriver.chrome.driver': "+System.getProperty("webdriver.chrome.driver"));
+			log.info("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
 		}
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		
+
 		try {
 			driver.manage().window().maximize();
 			driver.get(ytURL);
 			Thread.sleep(5000);
-			ts(driver, yt.printTime()," Opening URL: "+ytURL);
+			ts(driver, yt.printTime(), " Opening URL: " + ytURL);
 			WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
 			searchBox.sendKeys(txtVideoTitle);
 			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
@@ -86,29 +84,29 @@ public class YouTubeAdFree {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				searchButton.click();
-				JavascriptExecutor js = (JavascriptExecutor)driver;
+				JavascriptExecutor js = (JavascriptExecutor) driver;
 				js.executeScript("arguments[0].click();", searchButton);
 				log.info("Clicked using JavascriptExecutor");
 				Thread.sleep(3000);
 				driver.findElement(By.xpath(searchResultFirst)).click();
 			}
 			driver.findElement(By.xpath(fullScreenVideo)).click();
-			log.info("Title: "+driver.getTitle());
+			log.info("Title: " + driver.getTitle());
 			String startTime = yt.printTime();
 
 			for (int i = 0; i < 10000000; i++) {
 				if (driver.findElements(By.xpath(SkipAdButton)).size() > 0) {
 
-					ts(driver, Integer.toString(i)+"_"+yt.printTime(), "Clicking 'Skip ad', count: "+(i+1));
+					ts(driver, Integer.toString(i) + "_" + yt.printTime(), "Clicking 'Skip ad', count: " + (i + 1));
 					driver.findElement(By.xpath(SkipAdButton)).click();
 //					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
 
 				} else {
 					Thread.sleep(5000);
-					log.warn("Start time: "+startTime+"; Current time: "+yt.printTime());
+					log.warn("Start time: " + startTime + "; Current time: " + yt.printTime());
 				}
-				if(i>0&&i%3==0)
-					log.info("Screen time: "+displayTime(curTime));
+				if (i > 0 && i % 5 == 0)
+					log.info("Screen time: " + displayTime(curTime));
 
 			}
 
@@ -120,7 +118,7 @@ public class YouTubeAdFree {
 			driver.quit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			log.error("IOException exception occurred");
+			log.error("IO_Exception exception occurred");
 			e.printStackTrace();
 			driver.quit();
 		} catch (Exception e) {
@@ -129,21 +127,27 @@ public class YouTubeAdFree {
 			e.printStackTrace();
 			driver.quit();
 		}
-		
+
 	}
 
 	public ArrayList<String> readTextFile() {
-		
+
 		ArrayList<String> lineList = new ArrayList<String>();
-		String tempFilePath = "C:/Users/Hp/Desktop/YouTubeForKids.txt";
+		String tempFilePath = "";
+		String currUser = System.getProperty("user.name");
+		if (currUser.contains("hmd")) {
+			tempFilePath = "C:/Users/" + currUser + "/Desktop/YouTubeForKids.txt";
+		} else
+			tempFilePath = "C:/Users/Hp/Desktop/YouTubeForKids.txt";
+
 		File file = new File(tempFilePath);
-		
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 			String st;
-			
-			while((st=br.readLine())!=null) {
-				lineList.add(st);				
+
+			while ((st = br.readLine()) != null) {
+				lineList.add(st);
 			}
 
 			br.close();
@@ -153,26 +157,26 @@ public class YouTubeAdFree {
 		}
 		Collections.shuffle(lineList);
 		return lineList;
-		
+
 	}
-	
 
 	public String printTime() {
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d-MMM-yyyy_HH-mm-ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
-		
 
 	}
 
 	public static ArrayList<String> randomizeVideoTitle() {
-		
-		ArrayList<String> videoTitleList= new ArrayList<String>();
+
+		ArrayList<String> videoTitleList = new ArrayList<String>();
 		videoTitleList.add("Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs");
 		videoTitleList.add("Omar & Hana I 40 minutes compilation of series   I Islamic Cartoons");
-		videoTitleList.add("Durood Ibrahim Song (Allah Humma Salli) + More   Islamic Songs For Kids Compilation I Nasheed");
-		videoTitleList.add("Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV");
+		videoTitleList
+				.add("Durood Ibrahim Song (Allah Humma Salli) + More   Islamic Songs For Kids Compilation I Nasheed");
+		videoTitleList.add(
+				"Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV");
 		videoTitleList.add("The Best Alhamdulilah Song + More Islamic Songs for kids Compilation I Nasheed");
 		videoTitleList.add("ABC Song with ChuChu Toy Train");
 		videoTitleList.add("Baby Loves Stargazing - Twinkle Twinkle Little Star");
@@ -186,12 +190,11 @@ public class YouTubeAdFree {
 		videoTitleList.add("Fish Vs Bird | 4KUHD | Blue Planet II | BBC Earth");
 		videoTitleList.add("Bird Of Paradise Courtship Spectacle");
 		videoTitleList.add("SCUBA Diving Egypt Red Sea - Underwater Video HD");
-		
+
 		Collections.shuffle(videoTitleList);
-		
+
 		return videoTitleList;
 	}
-
 
 	public void ts(WebDriver driver, String name, String message) throws IOException {
 
@@ -199,37 +202,30 @@ public class YouTubeAdFree {
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 		File DestFile = new File("C:/all-screenshot/" + name + ".png");
 		FileUtils.copyFile(SrcFile, DestFile);
-		log.info(message+" scr name: "+name + ".png");
+		log.info(message + " scr name: " + name + ".png");
 	}
-	
+
 	public String displayTime(long startTime) {
 		String timeStringReturn = "";
-		long timeDiff = (System.currentTimeMillis() - startTime)/(1000*60);
-		
-//		if(timeDiff<=1) timeStringReturn = "1 min";
-//		else {
-//			if(timeDiff>1)
-//				timeStringReturn = timeDiff+" minutes";
-//		}
-		if(timeDiff/3600000>0) {
-			timeStringReturn = (timeDiff/3600000) + " hours; "+ timeStringReturn;
-			timeDiff = timeDiff/3600000;
+		long timeDiff = (System.currentTimeMillis() - startTime);
+		if (timeDiff / 3600000 > 0) {
+			timeStringReturn = timeStringReturn + (timeDiff / 3600000) + " hours; ";
+			timeDiff = timeDiff % 3600000;
 		}
-		
-		if(timeDiff/60000>0) {
-			timeStringReturn = (timeDiff/60000) + " minutes; "+ timeStringReturn;
-			timeDiff = timeDiff/60000;
+
+		if (timeDiff / 60000 > 0) {
+			timeStringReturn = timeStringReturn + (timeDiff / 60000) + " minutes; ";
+			timeDiff = timeDiff % 60000;
 		}
-		
-		if(timeDiff/1000>0) {
-			timeStringReturn = (timeDiff/1000) + " seconds;";
+
+		if (timeDiff / 1000 > 0) {
+			timeStringReturn = timeStringReturn + (timeDiff / 1000) + " seconds;";
 		}
 		
 		return timeStringReturn;
 		// mil to sec /1000
-		//mil to min /60000
-		//mil to hour /360000
+		// mil to min /60000
+		// mil to hour /360000
 	}
-
 
 }
