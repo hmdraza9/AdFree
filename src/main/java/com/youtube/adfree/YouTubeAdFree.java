@@ -50,7 +50,7 @@ public class YouTubeAdFree {
 
 	}
 
-	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) {
+	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) throws IOException {
 		long curTime = System.currentTimeMillis();
 		long tempCurTime = curTime;
 		ChromeOptions opt = new ChromeOptions();
@@ -88,11 +88,17 @@ public class YouTubeAdFree {
 				if (i > 0 && i % 1 == 0)
 					log.info("Screen time: " + getScreenTime(curTime));
 
+				log.info("tempCurTime: " + tempCurTime + "; time since current video: "
+						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
+						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
 //				if (currentMin > 30 && !(driver.getCurrentUrl().contentEquals(currentURL))) {
-				if ((System.currentTimeMillis()-tempCurTime) > 20000 && (driver.getCurrentUrl().contentEquals(currentURL))) {
-					log.info("Video changed within "+currentMin+" minutes,  changing video!");
+				if ((System.currentTimeMillis() - tempCurTime) > 1800000
+						&& !(driver.getCurrentUrl().contentEquals(currentURL))) {
+					log.info("Video changed within " + currentSec + " seconds,  changing video!");
 					loadNewVideo(driver);
 					tempCurTime = System.currentTimeMillis();
+				} else {
+					log.info("No video change");
 				}
 
 			}
@@ -112,6 +118,7 @@ public class YouTubeAdFree {
 			// TODO Auto-generated catch block
 			log.error("Some exception occurred");
 			e.printStackTrace();
+			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
 		}
 
@@ -228,6 +235,9 @@ public class YouTubeAdFree {
 		String txtVideoTitle = "";
 		Robot rb = new Robot();
 		rb.keyPress(KeyEvent.VK_ESCAPE);
+		rb.keyPress(KeyEvent.VK_ESCAPE);
+		rb.keyPress(KeyEvent.VK_ESCAPE);
+		rb.keyPress(KeyEvent.VK_ESCAPE);
 		try {
 			ArrayList<String> tempList = new ArrayList<String>();
 			tempList = yt.readTextFile();
@@ -239,7 +249,7 @@ public class YouTubeAdFree {
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
 			txtVideoTitle = tempList.get(tempInt / 2 + 1);
-			log.warn("Loading video title from code: " + txtVideoTitle);
+			log.info("Loading video title from code: " + txtVideoTitle);
 		}
 
 		WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
@@ -260,6 +270,8 @@ public class YouTubeAdFree {
 			driver.findElement(By.xpath(searchResultFirst)).click();
 		}
 		driver.findElement(By.xpath(fullScreenVideo)).click();
+		Thread.sleep(5000);
+		currentURL = driver.getCurrentUrl();
 	}
 
 }
