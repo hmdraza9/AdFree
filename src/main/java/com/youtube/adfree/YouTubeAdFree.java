@@ -1,5 +1,8 @@
 package com.youtube.adfree;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -28,40 +31,31 @@ public class YouTubeAdFree {
 
 	Logger log = LogManager.getLogger(YouTubeAdFree.class);
 	static YouTubeAdFree yt = new YouTubeAdFree();
+	public static String currentURL;
+	public static int currentHour;
+	public static int currentMin;
+	public static int currentSec;
+	public static String osName = System.getProperty("os.name");
+	public static String ytURL = "https://www.youtube.com";
+	public static String searchBoxXpath = "//input[@id='search']";
+	public static String SkipAdButton = "//div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button";
+	public static String searchIcon = "//button[contains(@id,'search-icon')]";
+	public static String searchResultFirst = "(//a[@id='video-title'])[1]";
+	public static String fullScreenVideo = "//button[contains(@title,'ull screen')]";
 
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-				yt.freeYoutuber(yt, driver);
+		yt.freeYoutuber(yt, driver);
 
 	}
 
 	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) {
 		long curTime = System.currentTimeMillis();
+		long tempCurTime = curTime;
 		ChromeOptions opt = new ChromeOptions();
 		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
-		String txtVideoTitle = "";
-		try {
-			ArrayList<String> tempList = new ArrayList<String>();
-			tempList = yt.readTextFile();
-			int tempInt = tempList.size();
-			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
-			log.info("Loading video title from text file: " + txtVideoTitle);
-		} catch (Exception ex) {
-			System.out.println("Exception: " + ex.getMessage());
-			ArrayList<String> tempList = randomizeVideoTitle();
-			int tempInt = tempList.size();
-			txtVideoTitle = tempList.get(tempInt / 2 + 1);
-			log.warn("Loading video title from code: " + txtVideoTitle);
-		}
 		driver = new ChromeDriver(opt);
-		String osName = System.getProperty("os.name");
-		String ytURL = "https://www.youtube.com";
-		String searchBoxXpath = "//input[@id='search']";
-		String SkipAdButton = "//div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button";
-		String searchIcon = "//button[contains(@id,'search-icon')]";
-		String searchResultFirst = "(//a[@id='video-title'])[1]";
-		String fullScreenVideo = "//button[contains(@title,'ull screen')]";
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
@@ -74,24 +68,10 @@ public class YouTubeAdFree {
 			driver.get(ytURL);
 			Thread.sleep(5000);
 			ts(driver, yt.printTime(), " Opening URL: " + ytURL);
-			WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
-			searchBox.sendKeys(txtVideoTitle);
-			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
-			searchButton.click();
-			try {
-				driver.findElement(By.xpath(searchResultFirst)).click();
-			} catch (NoSuchElementException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				searchButton.click();
-				JavascriptExecutor js = (JavascriptExecutor) driver;
-				js.executeScript("arguments[0].click();", searchButton);
-				log.info("Clicked using JavascriptExecutor");
-				Thread.sleep(3000);
-				driver.findElement(By.xpath(searchResultFirst)).click();
-			}
-			driver.findElement(By.xpath(fullScreenVideo)).click();
+			yt.loadNewVideo(driver);
 			log.info("Title: " + driver.getTitle());
+			currentURL = driver.getCurrentUrl();
+			log.info("Current URL: " + currentURL);
 			String startTime = yt.printTime();
 
 			for (int i = 0; i < 10000000; i++) {
@@ -105,8 +85,15 @@ public class YouTubeAdFree {
 					Thread.sleep(5000);
 					log.warn("Start time: " + startTime + "; Current time: " + yt.printTime());
 				}
-				if (i > 0 && i % 5 == 0)
-					log.info("Screen time: " + displayTime(curTime));
+				if (i > 0 && i % 1 == 0)
+					log.info("Screen time: " + getScreenTime(curTime));
+
+//				if (currentMin > 30 && !(driver.getCurrentUrl().contentEquals(currentURL))) {
+				if ((System.currentTimeMillis()-tempCurTime) > 20000 && (driver.getCurrentUrl().contentEquals(currentURL))) {
+					log.info("Video changed within "+currentMin+" minutes,  changing video!");
+					loadNewVideo(driver);
+					tempCurTime = System.currentTimeMillis();
+				}
 
 			}
 
@@ -205,27 +192,74 @@ public class YouTubeAdFree {
 		log.info(message + " scr name: " + name + ".png");
 	}
 
-	public String displayTime(long startTime) {
+	public String getScreenTime(long startTime) {
+		long tempVal = 45678909876545L;
 		String timeStringReturn = "";
 		long timeDiff = (System.currentTimeMillis() - startTime);
 		if (timeDiff / 3600000 > 0) {
-			timeStringReturn = timeStringReturn + (timeDiff / 3600000) + " hours; ";
+			tempVal = timeDiff / 3600000;
+			timeStringReturn = timeStringReturn + tempVal + " hours; ";
+			currentHour = (int) tempVal;
 			timeDiff = timeDiff % 3600000;
 		}
 
 		if (timeDiff / 60000 > 0) {
-			timeStringReturn = timeStringReturn + (timeDiff / 60000) + " minutes; ";
+			tempVal = timeDiff / 60000;
+			timeStringReturn = timeStringReturn + tempVal + " minutes; ";
+			currentMin = (int) tempVal;
 			timeDiff = timeDiff % 60000;
 		}
 
 		if (timeDiff / 1000 > 0) {
-			timeStringReturn = timeStringReturn + (timeDiff / 1000) + " seconds;";
+			tempVal = timeDiff / 1000;
+			timeStringReturn = timeStringReturn + tempVal + " seconds;";
+			currentSec = (int) tempVal;
 		}
-		
+
 		return timeStringReturn;
 		// mil to sec /1000
 		// mil to min /60000
 		// mil to hour /360000
+	}
+
+	public void loadNewVideo(WebDriver driver) throws InterruptedException, AWTException {
+
+		log.info("Loading new video...");
+		String txtVideoTitle = "";
+		Robot rb = new Robot();
+		rb.keyPress(KeyEvent.VK_ESCAPE);
+		try {
+			ArrayList<String> tempList = new ArrayList<String>();
+			tempList = yt.readTextFile();
+			int tempInt = tempList.size();
+			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
+			log.info("Loading video title from text file: " + txtVideoTitle);
+		} catch (Exception ex) {
+			System.out.println("Exception: " + ex.getMessage());
+			ArrayList<String> tempList = randomizeVideoTitle();
+			int tempInt = tempList.size();
+			txtVideoTitle = tempList.get(tempInt / 2 + 1);
+			log.warn("Loading video title from code: " + txtVideoTitle);
+		}
+
+		WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
+		searchBox.clear();
+		searchBox.sendKeys(txtVideoTitle);
+		WebElement searchButton = driver.findElement(By.xpath(searchIcon));
+		searchButton.click();
+		try {
+			driver.findElement(By.xpath(searchResultFirst)).click();
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			searchButton.click();
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", searchButton);
+			log.info("Clicked using JavascriptExecutor");
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(searchResultFirst)).click();
+		}
+		driver.findElement(By.xpath(fullScreenVideo)).click();
 	}
 
 }
