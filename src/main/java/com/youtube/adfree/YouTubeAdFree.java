@@ -42,6 +42,8 @@ public class YouTubeAdFree {
 	public static String searchIcon = "//button[contains(@id,'search-icon')]";
 	public static String searchResultFirst = "(//a[@id='video-title'])[1]";
 	public static String fullScreenVideo = "//button[contains(@title,'ull screen')]";
+	public static String videoScreen = "//div[@class='html5-video-container']/video";
+	Robot rb ;
 
 	static WebDriver driver;
 
@@ -58,8 +60,10 @@ public class YouTubeAdFree {
 		driver = new ChromeDriver(opt);
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
+			System.out.println("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
 			log.info("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
+			System.out.println("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
 		}
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
@@ -70,8 +74,10 @@ public class YouTubeAdFree {
 			ts(driver, yt.printTime(), " Opening URL: " + ytURL);
 			yt.loadNewVideo(driver);
 			log.info("Title: " + driver.getTitle());
+			System.out.println("Title: " + driver.getTitle());
 			currentURL = driver.getCurrentUrl();
 			log.info("Current URL: " + currentURL);
+			System.out.println("Current URL: " + currentURL);
 			String startTime = yt.printTime();
 
 			for (int i = 0; i < 10000000; i++) {
@@ -80,25 +86,33 @@ public class YouTubeAdFree {
 					ts(driver, Integer.toString(i) + "_" + yt.printTime(), "Clicking 'Skip ad', count: " + (i + 1));
 					driver.findElement(By.xpath(SkipAdButton)).click();
 //					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
+					System.out.println("Start time: "+startTime+"; Time now: "+yt.printTime());
 
 				} else {
 					Thread.sleep(5000);
 					log.warn("Start time: " + startTime + "; Current time: " + yt.printTime());
+					System.out.println("Start time: " + startTime + "; Current time: " + yt.printTime());
 				}
 				if (i > 0 && i % 1 == 0)
 					log.info("Screen time: " + getScreenTime(curTime));
+				System.out.println("Screen time: " + getScreenTime(curTime));
 
 				log.info("tempCurTime: " + tempCurTime + "; time since current video: "
+						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
+						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
+				System.out.println("tempCurTime: " + tempCurTime + "; time since current video: "
 						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
 						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
 //				if (currentMin > 30 && !(driver.getCurrentUrl().contentEquals(currentURL))) {
 				if ((System.currentTimeMillis() - tempCurTime) > 1800000
 						&& !(driver.getCurrentUrl().contentEquals(currentURL))) {
 					log.info("Video changed within " + currentSec + " seconds,  changing video!");
+					System.out.println("Video changed within " + currentSec + " seconds,  changing video!");
 					loadNewVideo(driver);
 					tempCurTime = System.currentTimeMillis();
 				} else {
 					log.info("No video change");
+					System.out.println("No video change");
 				}
 
 			}
@@ -107,16 +121,19 @@ public class YouTubeAdFree {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			log.error("InterruptedException exception occurred");
+			System.out.println("InterruptedException exception occurred");
 			e.printStackTrace();
 			driver.quit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			log.error("IO_Exception exception occurred");
+			System.out.println("IO_Exception exception occurred");
 			e.printStackTrace();
 			driver.quit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("Some exception occurred");
+			System.out.println("Some exception occurred");
 			e.printStackTrace();
 			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
@@ -148,6 +165,7 @@ public class YouTubeAdFree {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			log.error("IOException exception occurred");
+			System.out.println("IOException exception occurred");
 		}
 		Collections.shuffle(lineList);
 		return lineList;
@@ -197,6 +215,7 @@ public class YouTubeAdFree {
 		File DestFile = new File("C:/all-screenshot/" + name + ".png");
 		FileUtils.copyFile(SrcFile, DestFile);
 		log.info(message + " scr name: " + name + ".png");
+		System.out.println(message + " scr name: " + name + ".png");
 	}
 
 	public String getScreenTime(long startTime) {
@@ -231,9 +250,10 @@ public class YouTubeAdFree {
 
 	public void loadNewVideo(WebDriver driver) throws InterruptedException, AWTException {
 
+		rb = new Robot();
 		log.info("Loading new video...");
+		System.out.println("Loading new video...");
 		String txtVideoTitle = "";
-		Robot rb = new Robot();
 		rb.keyPress(KeyEvent.VK_ESCAPE);
 		rb.keyPress(KeyEvent.VK_ESCAPE);
 		rb.keyPress(KeyEvent.VK_ESCAPE);
@@ -244,12 +264,14 @@ public class YouTubeAdFree {
 			int tempInt = tempList.size();
 			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
 			log.info("Loading video title from text file: " + txtVideoTitle);
+			System.out.println("Loading video title from text file: " + txtVideoTitle);
 		} catch (Exception ex) {
 			System.out.println("Exception: " + ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
 			txtVideoTitle = tempList.get(tempInt / 2 + 1);
 			log.info("Loading video title from code: " + txtVideoTitle);
+			System.out.println("Loading video title from code: " + txtVideoTitle);
 		}
 
 		WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
@@ -266,10 +288,23 @@ public class YouTubeAdFree {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", searchButton);
 			log.info("Clicked using JavascriptExecutor");
+			System.out.println("Clicked using JavascriptExecutor");
 			Thread.sleep(3000);
 			driver.findElement(By.xpath(searchResultFirst)).click();
 		}
 		driver.findElement(By.xpath(fullScreenVideo)).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(videoScreen)).click();
+		for(int i=0;i<20;i++) {
+			rb.keyPress(KeyEvent.VK_DOWN);
+			Thread.sleep(100);
+		}
+		rb.keyPress(KeyEvent.VK_UP);
+		rb.keyPress(KeyEvent.VK_UP);
+		rb.keyPress(KeyEvent.VK_UP);
+		rb.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(500);
+		driver.findElement(By.xpath(videoScreen)).click();
 		Thread.sleep(5000);
 		currentURL = driver.getCurrentUrl();
 	}
