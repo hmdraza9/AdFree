@@ -282,7 +282,7 @@ public class YouTubeAdFree {
 		try {
 			driver.findElement(By.xpath(searchResultFirst)).click();
 		} catch (NoSuchElementException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 			searchButton.click();
 			JavascriptExecutor js = (JavascriptExecutor) driver;
