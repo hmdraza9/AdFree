@@ -7,12 +7,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -65,7 +65,7 @@ public class YouTubeAdFree {
 			log.info("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
 			System.out.println("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
 		}
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 		try {
 			driver.manage().window().maximize();
@@ -254,6 +254,7 @@ public class YouTubeAdFree {
 		log.info("Loading new video...");
 		System.out.println("Loading new video...");
 		String txtVideoTitle = "";
+		Robot rb = new Robot();
 		rb.keyPress(KeyEvent.VK_ESCAPE);
 		rb.keyPress(KeyEvent.VK_ESCAPE);
 		rb.keyPress(KeyEvent.VK_ESCAPE);
@@ -261,6 +262,7 @@ public class YouTubeAdFree {
 		try {
 			ArrayList<String> tempList = new ArrayList<String>();
 			tempList = yt.readTextFile();
+			Collections.sort(tempList);
 			int tempInt = tempList.size();
 			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
 			log.info("Loading video title from text file: " + txtVideoTitle);
@@ -282,7 +284,6 @@ public class YouTubeAdFree {
 		try {
 			driver.findElement(By.xpath(searchResultFirst)).click();
 		} catch (NoSuchElementException e) {
-			// TODO Auto-generated catch block 
 			e.printStackTrace();
 			searchButton.click();
 			JavascriptExecutor js = (JavascriptExecutor) driver;
