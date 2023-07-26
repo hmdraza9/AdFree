@@ -117,26 +117,25 @@ public class YouTubeAdFree {
 
 			}
 
-			driver.quit();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			log.error("InterruptedException exception occurred");
 			System.out.println("InterruptedException exception occurred");
 			e.printStackTrace();
-			driver.quit();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			log.error("IO_Exception exception occurred");
 			System.out.println("IO_Exception exception occurred");
 			e.printStackTrace();
-			driver.quit();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("Some exception occurred");
 			System.out.println("Some exception occurred");
 			e.printStackTrace();
+		}finally {
 			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
+			
 		}
 
 	}
@@ -301,8 +300,11 @@ public class YouTubeAdFree {
 			Thread.sleep(100);
 		}
 		rb.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(100);
 		rb.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(100);
 		rb.keyPress(KeyEvent.VK_UP);
+		Thread.sleep(100);
 		rb.keyPress(KeyEvent.VK_UP);
 		Thread.sleep(500);
 		driver.findElement(By.xpath(videoScreen)).click();
