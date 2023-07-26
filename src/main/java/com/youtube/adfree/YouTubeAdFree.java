@@ -300,6 +300,7 @@ public class YouTubeAdFree {
 			rb.keyPress(KeyEvent.VK_DOWN);
 			Thread.sleep(100);
 		}
+		Thread.sleep(1500);
 		rb.keyPress(KeyEvent.VK_UP);
 		rb.keyPress(KeyEvent.VK_UP);
 		rb.keyPress(KeyEvent.VK_UP);
