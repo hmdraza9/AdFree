@@ -262,9 +262,9 @@ public class YouTubeAdFree {
 		try {
 			ArrayList<String> tempList = new ArrayList<String>();
 			tempList = yt.readTextFile();
-			Collections.sort(tempList);
+			Collections.shuffle(tempList);
 			int tempInt = tempList.size();
-			txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
+			txtVideoTitle = tempList.get(tempInt / 2 + 1);
 			log.info("Loading video title from text file: " + txtVideoTitle);
 			System.out.println("Loading video title from text file: " + txtVideoTitle);
 		} catch (Exception ex) {
