@@ -60,7 +60,8 @@ public class YouTubeAdFree {
 		long curTime = System.currentTimeMillis();
 		long tempCurTime = curTime;
 		ChromeOptions opt = new ChromeOptions();
-		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// com.youtube.adfree
+//		opt.addArguments("--headless");//com.youtube.adfree
 		driver = new ChromeDriver(opt);
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
@@ -75,7 +76,7 @@ public class YouTubeAdFree {
 			Thread.sleep(5000);
 			ts(driver, yt.printTime(), "Opening URL: " + ytURL);
 			yt.loadNewVideo(driver);
-			log.info("Title: " + driver.getTitle());
+			log.info("Current Title: " + driver.getTitle());
 			currentURL = driver.getCurrentUrl();
 			log.info("Current URL: " + currentURL);
 			String startTime = yt.printTime();
@@ -84,7 +85,7 @@ public class YouTubeAdFree {
 				if (tempWait == null)
 					waitBeforeVideoShuffle = 30;
 				else
-					waitBeforeVideoShuffle = Integer.valueOf(yt.propsReader("waitBeforeVideoShuffle"));
+					waitBeforeVideoShuffle = Integer.valueOf(tempWait);
 			} catch (Exception e) {
 				waitBeforeVideoShuffle = 30;
 			}
@@ -355,7 +356,7 @@ public class YouTubeAdFree {
 				rb.keyPress(KeyEvent.VK_UP);
 				Thread.sleep(100);
 			}
-			
+
 			driver.findElement(By.xpath(videoScreen)).click();
 		} catch (Exception e) {
 			e.printStackTrace();

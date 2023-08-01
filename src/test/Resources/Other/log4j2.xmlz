@@ -1,0 +1,24 @@
+<Configuration name="ConfigTest" status="info" monitorInterval="5">
+	<Properties>
+		<Property name="filename">./logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="file" fileName="${filename}/logging.log" filePattern="${filename}/logs-%d{HH-mm-ss-SSS}.log">
+			<PatternLayout>
+				<pattern>%d %p %c{1.} [%t] %m%n</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="5 MB" />
+		</RollingFile>
+		<Console name="ABC" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{10} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.youtube.adfree" level="info" additivity="false">
+			<AppenderRef ref="ABC" />
+		</Logger>
+		<Root level="fatal">
+			<AppenderRef ref="ABC" />
+		</Root>
+	</Loggers>
+</Configuration>
