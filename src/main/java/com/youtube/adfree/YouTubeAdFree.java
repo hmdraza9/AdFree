@@ -5,6 +5,8 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
@@ -13,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -35,20 +38,21 @@ public class YouTubeAdFree {
 	public static int currentHour;
 	public static int currentMin;
 	public static int currentSec;
+	public static int waitBeforeVideoShuffle = 60;
 	public static String osName = System.getProperty("os.name");
 	public static String ytURL = "https://www.youtube.com";
 	public static String searchBoxXpath = "//input[@id='search']";
+	public static String videoScreen = "//div[@class='html5-video-container']/video";
 	public static String SkipAdButton = "//div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button";
 	public static String searchIcon = "//button[contains(@id,'search-icon')]";
 	public static String searchResultFirst = "(//a[@id='video-title'])[1]";
 	public static String fullScreenVideo = "//button[contains(@title,'ull screen')]";
-	public static String videoScreen = "//div[@class='html5-video-container']/video";
-	Robot rb ;
 
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		yt.freeYoutuber(yt, driver);
+//		System.out.println("readTextFile: "+yt.readTextFile().get(0));
 
 	}
 
@@ -60,10 +64,8 @@ public class YouTubeAdFree {
 		driver = new ChromeDriver(opt);
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
-			System.out.println("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
 			log.info("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
-			System.out.println("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
@@ -71,71 +73,75 @@ public class YouTubeAdFree {
 			driver.manage().window().maximize();
 			driver.get(ytURL);
 			Thread.sleep(5000);
-			ts(driver, yt.printTime(), " Opening URL: " + ytURL);
+			ts(driver, yt.printTime(), "Opening URL: " + ytURL);
 			yt.loadNewVideo(driver);
 			log.info("Title: " + driver.getTitle());
-			System.out.println("Title: " + driver.getTitle());
 			currentURL = driver.getCurrentUrl();
 			log.info("Current URL: " + currentURL);
-			System.out.println("Current URL: " + currentURL);
 			String startTime = yt.printTime();
+			String tempWait = yt.propsReader("waitBeforeVideoShuffle");
+			try {
+				if (tempWait == null)
+					waitBeforeVideoShuffle = 30;
+				else
+					waitBeforeVideoShuffle = Integer.valueOf(yt.propsReader("waitBeforeVideoShuffle"));
+			} catch (Exception e) {
+				waitBeforeVideoShuffle = 30;
+			}
 
+			log.info("waitBeforeVideoShuffle = " + waitBeforeVideoShuffle);
 			for (int i = 0; i < 10000000; i++) {
 				if (driver.findElements(By.xpath(SkipAdButton)).size() > 0) {
 
 					ts(driver, Integer.toString(i) + "_" + yt.printTime(), "Clicking 'Skip ad', count: " + (i + 1));
 					driver.findElement(By.xpath(SkipAdButton)).click();
 //					log.info("Start time: "+startTime+"; Time now: "+yt.printTime());
-					System.out.println("Start time: "+startTime+"; Time now: "+yt.printTime());
 
 				} else {
 					Thread.sleep(5000);
 					log.warn("Start time: " + startTime + "; Current time: " + yt.printTime());
-					System.out.println("Start time: " + startTime + "; Current time: " + yt.printTime());
 				}
 				if (i > 0 && i % 1 == 0)
 					log.info("Screen time: " + getScreenTime(curTime));
-				System.out.println("Screen time: " + getScreenTime(curTime));
 
 				log.info("tempCurTime: " + tempCurTime + "; time since current video: "
 						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
 						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
-				System.out.println("tempCurTime: " + tempCurTime + "; time since current video: "
-						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
-						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
 //				if (currentMin > 30 && !(driver.getCurrentUrl().contentEquals(currentURL))) {
-				if ((System.currentTimeMillis() - tempCurTime) > 1800000
+				if ((System.currentTimeMillis() - tempCurTime) > (waitBeforeVideoShuffle * 60 * 1000)
 						&& !(driver.getCurrentUrl().contentEquals(currentURL))) {
 					log.info("Video changed within " + currentSec + " seconds,  changing video!");
-					System.out.println("Video changed within " + currentSec + " seconds,  changing video!");
 					loadNewVideo(driver);
 					tempCurTime = System.currentTimeMillis();
 				} else {
 					log.info("No video change");
-					System.out.println("No video change");
 				}
 
 			}
 
+			driver.quit();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			log.error("InterruptedException exception occurred");
-			System.out.println("InterruptedException exception occurred");
 			e.printStackTrace();
+			driver.quit();
+			log.info("Driver Quitted due to the exception");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			log.error("IO_Exception exception occurred");
-			System.out.println("IO_Exception exception occurred");
 			e.printStackTrace();
+			driver.quit();
+			log.info("Driver Quitted due to the exception");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("Some exception occurred");
-			System.out.println("Some exception occurred");
 			e.printStackTrace();
-		}finally {
 			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
-			
+			log.info("Driver Quitted due to the exception");
+		} finally {
+			driver.quit();
+			log.info("Driver Quitted due to the exception");
 		}
 
 	}
@@ -164,7 +170,6 @@ public class YouTubeAdFree {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			log.error("IOException exception occurred");
-			System.out.println("IOException exception occurred");
 		}
 		Collections.shuffle(lineList);
 		return lineList;
@@ -177,6 +182,26 @@ public class YouTubeAdFree {
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
 
+	}
+
+	public String propsReader(String keyTerm) {
+		String returnString = "";
+		String propsPath = "C:/all-props/config.properties";
+
+		try {
+			FileInputStream fis = new FileInputStream(new File(propsPath));
+			Properties props = new Properties();
+			props.load(fis);
+			returnString = props.getProperty(keyTerm);
+		} catch (FileNotFoundException e) {
+			log.info("Properties file not found at: " + propsPath);
+			e.printStackTrace();
+		} catch (IOException e) {
+			log.info("Properties file not found at: " + propsPath);
+			e.printStackTrace();
+		}
+		log.info("Returned from props: " + returnString);
+		return returnString;
 	}
 
 	public static ArrayList<String> randomizeVideoTitle() {
@@ -214,7 +239,6 @@ public class YouTubeAdFree {
 		File DestFile = new File("C:/all-screenshot/" + name + ".png");
 		FileUtils.copyFile(SrcFile, DestFile);
 		log.info(message + " scr name: " + name + ".png");
-		System.out.println(message + " scr name: " + name + ".png");
 	}
 
 	public String getScreenTime(long startTime) {
@@ -249,9 +273,7 @@ public class YouTubeAdFree {
 
 	public void loadNewVideo(WebDriver driver) throws InterruptedException, AWTException {
 
-		rb = new Robot();
 		log.info("Loading new video...");
-		System.out.println("Loading new video...");
 		String txtVideoTitle = "";
 		Robot rb = new Robot();
 		rb.keyPress(KeyEvent.VK_ESCAPE);
@@ -261,55 +283,83 @@ public class YouTubeAdFree {
 		try {
 			ArrayList<String> tempList = new ArrayList<String>();
 			tempList = yt.readTextFile();
-			Collections.shuffle(tempList);
 			int tempInt = tempList.size();
-			txtVideoTitle = tempList.get(tempInt / 2 + 1);
+			if (tempInt > 1) {
+				txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
+			} else
+				txtVideoTitle = tempList.get(0);
 			log.info("Loading video title from text file: " + txtVideoTitle);
-			System.out.println("Loading video title from text file: " + txtVideoTitle);
 		} catch (Exception ex) {
 			System.out.println("Exception: " + ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
-			txtVideoTitle = tempList.get(tempInt / 2 + 1);
+			if (tempInt > 1) {
+				txtVideoTitle = tempList.get(tempInt / 2 + 1);
+			} else
+				txtVideoTitle = tempList.get(0);
 			log.info("Loading video title from code: " + txtVideoTitle);
-			System.out.println("Loading video title from code: " + txtVideoTitle);
 		}
 
-		WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
-		searchBox.clear();
-		searchBox.sendKeys(txtVideoTitle);
-		WebElement searchButton = driver.findElement(By.xpath(searchIcon));
-		searchButton.click();
-		try {
-			driver.findElement(By.xpath(searchResultFirst)).click();
-		} catch (NoSuchElementException e) {
-			e.printStackTrace();
+		if (!txtVideoTitle.contains("www.youtube.com")) {
+			log.info("Loading video by title: " + txtVideoTitle);
+			WebElement searchBox = driver.findElement(By.xpath(searchBoxXpath));
+			searchBox.clear();
+			searchBox.sendKeys(txtVideoTitle);
+			WebElement searchButton = driver.findElement(By.xpath(searchIcon));
 			searchButton.click();
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].click();", searchButton);
-			log.info("Clicked using JavascriptExecutor");
-			System.out.println("Clicked using JavascriptExecutor");
-			Thread.sleep(3000);
-			driver.findElement(By.xpath(searchResultFirst)).click();
+			try {
+				driver.findElement(By.xpath(searchResultFirst)).click();
+			} catch (NoSuchElementException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				searchButton.click();
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("arguments[0].click();", searchButton);
+				log.info("Clicked using JavascriptExecutor");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath(searchResultFirst)).click();
+			}
+			driver.findElement(By.xpath(fullScreenVideo)).click();
+			Thread.sleep(5000);
+		} else {
+			log.info("Loading video by URL: " + txtVideoTitle);
+			driver.get(txtVideoTitle);
+			Thread.sleep(1000);
+			driver.findElement(By.xpath(fullScreenVideo)).click();
+			Thread.sleep(2000);
 		}
-		driver.findElement(By.xpath(fullScreenVideo)).click();
-		Thread.sleep(2000);
-		driver.findElement(By.xpath(videoScreen)).click();
-		for(int i=0;i<20;i++) {
-			rb.keyPress(KeyEvent.VK_DOWN);
-			Thread.sleep(100);
-		}
-		rb.keyPress(KeyEvent.VK_UP);
-		Thread.sleep(100);
-		rb.keyPress(KeyEvent.VK_UP);
-		Thread.sleep(100);
-		rb.keyPress(KeyEvent.VK_UP);
-		Thread.sleep(100);
-		rb.keyPress(KeyEvent.VK_UP);
-		Thread.sleep(500);
-		driver.findElement(By.xpath(videoScreen)).click();
+		yt.controlVolume(driver, rb, 20);
 		Thread.sleep(5000);
+
 		currentURL = driver.getCurrentUrl();
+	}
+
+	public void controlVolume(WebDriver driver, Robot rb, int defaultVolume) {
+
+		try {
+			driver.findElement(By.xpath(videoScreen)).click();
+			for (int i = 0; i < 20; i++) {
+				rb.keyPress(KeyEvent.VK_DOWN);
+				Thread.sleep(100);
+			}
+			String desiredVolumeInPercent;
+			try {
+				desiredVolumeInPercent = yt.propsReader("desiredVolumeInPercent");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				desiredVolumeInPercent = String.valueOf(defaultVolume);
+			}
+			int tempInt = Integer.parseInt(desiredVolumeInPercent) / 5;
+			for (int i = 0; i < tempInt; i++) {
+				rb.keyPress(KeyEvent.VK_UP);
+				Thread.sleep(100);
+			}
+			
+			driver.findElement(By.xpath(videoScreen)).click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
