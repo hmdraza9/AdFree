@@ -1,0 +1,34 @@
+[INFO ] 2023-08-03 22:51:54.629 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-08-03 22:51:54.630 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-08-03 22:52:04.178 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 3-Aug-2023_22-52-03.png
+[INFO ] 2023-08-03 22:52:04.178 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-08-03 22:52:04.224 [main] YouTubeAdFree - Loading video title from text file: Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV
+[INFO ] 2023-08-03 22:52:04.224 [main] YouTubeAdFree - Loading video by title: Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV
+[INFO ] 2023-08-03 22:52:14.367 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-08-03 22:52:20.263 [main] YouTubeAdFree - Current Title: Old MacDonald Had A Farm and Many More Nursery Rhymes for Children | Kids Songs by ChuChu TV - YouTube
+[INFO ] 2023-08-03 22:52:20.272 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-08-03 22:52:20.272 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-08-03 22:52:20.272 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[INFO ] 2023-08-03 22:52:20.374 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_3-Aug-2023_22-52-20.png
+[INFO ] 2023-08-03 22:52:20.526 [main] YouTubeAdFree - tempCurTime: 1691083312551; time since current video: 27 seconds;  Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0; previous URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-08-03 22:52:20.527 [main] YouTubeAdFree - Current time in ms: 1691083340527
+[INFO ] 2023-08-03 22:52:20.527 [main] YouTubeAdFree - Current video start time: 1691083312551
+[INFO ] 2023-08-03 22:52:20.527 [main] YouTubeAdFree - Video change cut off ms: 27976
+[INFO ] 2023-08-03 22:52:20.527 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-08-03 22:52:20.527 [main] YouTubeAdFree - No video change
+[WARN ] 2023-08-03 22:52:45.574 [main] YouTubeAdFree - Start time: 3-Aug-2023_22-52-20; Current time: 3-Aug-2023_22-52-45
+[INFO ] 2023-08-03 22:52:45.576 [main] YouTubeAdFree - Screen time: 53 seconds;
+[INFO ] 2023-08-03 22:52:45.596 [main] YouTubeAdFree - tempCurTime: 1691083312551; time since current video: 53 seconds;  Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0; previous URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-08-03 22:52:45.596 [main] YouTubeAdFree - Current time in ms: 1691083365596
+[INFO ] 2023-08-03 22:52:45.597 [main] YouTubeAdFree - Current video start time: 1691083312551
+[INFO ] 2023-08-03 22:52:45.597 [main] YouTubeAdFree - Video change cut off ms: 53046
+[INFO ] 2023-08-03 22:52:45.597 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-08-03 22:52:45.598 [main] YouTubeAdFree - No video change
+[WARN ] 2023-08-03 22:53:10.665 [main] YouTubeAdFree - Start time: 3-Aug-2023_22-52-20; Current time: 3-Aug-2023_22-53-10
+[INFO ] 2023-08-03 22:53:10.665 [main] YouTubeAdFree - Screen time: 1 minutes; 18 seconds;
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - tempCurTime: 1691083312551; time since current video: 78 seconds;  Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0; previous URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - Current time in ms: 1691083390675
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - Current video start time: 1691083312551
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - Video change cut off ms: 78124
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-08-03 22:53:10.675 [main] YouTubeAdFree - No video change

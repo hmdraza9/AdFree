@@ -28,11 +28,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class YouTubeAdFree {
 
-	Logger log = LogManager.getLogger(YouTubeAdFree.class);
+	private static final Logger log = LogManager.getLogger(YouTubeAdFree.class);
 	static YouTubeAdFree yt = new YouTubeAdFree();
 	public static String currentURL;
 	public static int currentHour;
@@ -51,18 +52,29 @@ public class YouTubeAdFree {
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		yt.freeYoutuber(yt, driver);
+		do {
+			try {
+				yt.freeYoutuber(yt);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				yt.freeYoutuber(yt);
+			}
+		}
+		while(false);//making this true will run this code indefinitely
 //		System.out.println("readTextFile: "+yt.readTextFile().get(0));
 
 	}
 
-	public void freeYoutuber(YouTubeAdFree yt, WebDriver driver) throws IOException {
+	public void freeYoutuber(YouTubeAdFree yt) throws IOException {
 		long curTime = System.currentTimeMillis();
 		long tempCurTime = curTime;
 		ChromeOptions opt = new ChromeOptions();
 		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// com.youtube.adfree
-//		opt.addArguments("--headless");//com.youtube.adfree
-		driver = new ChromeDriver(opt);
+//		opt.addArguments("--headless");
+		ChromeDriverService service=new ChromeDriverService.Builder().withLogOutput(System.out).build();
+//		driver = new ChromeDriver(opt);
+		driver = new ChromeDriver(service);
 		if (osName.toLowerCase().contains("window")) {
 			log.info("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
@@ -90,7 +102,7 @@ public class YouTubeAdFree {
 				waitBeforeVideoShuffle = 30;
 			}
 
-			log.info("waitBeforeVideoShuffle = " + waitBeforeVideoShuffle);
+			log.info("waitBeforeVideoShuffle = " + waitBeforeVideoShuffle+" mins");
 			for (int i = 0; i < 10000000; i++) {
 				if (driver.findElements(By.xpath(SkipAdButton)).size() > 0) {
 
@@ -102,13 +114,19 @@ public class YouTubeAdFree {
 					Thread.sleep(5000);
 					log.warn("Start time: " + startTime + "; Current time: " + yt.printTime());
 				}
-				if (i > 0 && i % 1 == 0)
+				if (i > 0 && i % 1 == 0) {
 					log.info("Screen time: " + getScreenTime(curTime));
+				}
+					
 
 				log.info("tempCurTime: " + tempCurTime + "; time since current video: "
 						+ (System.currentTimeMillis() - tempCurTime) / 1000 + " seconds;  Current URL: "
 						+ driver.getCurrentUrl() + "; previous URL: " + currentURL);
 //				if (currentMin > 30 && !(driver.getCurrentUrl().contentEquals(currentURL))) {
+				log.info("Current time in ms: "+System.currentTimeMillis());
+				log.info("Current video start time: "+tempCurTime);
+				log.info("Video change cut off ms: "+(System.currentTimeMillis() - tempCurTime));
+				log.info("Wait before video change value: "+(waitBeforeVideoShuffle * 60 * 1000));
 				if ((System.currentTimeMillis() - tempCurTime) > (waitBeforeVideoShuffle * 60 * 1000)
 						&& !(driver.getCurrentUrl().contentEquals(currentURL))) {
 					log.info("Video changed within " + currentSec + " seconds,  changing video!");
@@ -122,22 +140,20 @@ public class YouTubeAdFree {
 
 			driver.quit();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			log.error("InterruptedException exception occurred");
 			e.printStackTrace();
+			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
 			log.info("Driver Quitted due to the exception");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			log.error("IO_Exception exception occurred");
 			e.printStackTrace();
+			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
 			log.info("Driver Quitted due to the exception");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			log.error("Some exception occurred");
 			e.printStackTrace();
-			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
 			driver.quit();
 			log.info("Driver Quitted due to the exception");
 		} finally {
@@ -169,7 +185,6 @@ public class YouTubeAdFree {
 
 			br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			log.error("IOException exception occurred");
 		}
 		Collections.shuffle(lineList);
@@ -311,7 +326,6 @@ public class YouTubeAdFree {
 			try {
 				driver.findElement(By.xpath(searchResultFirst)).click();
 			} catch (NoSuchElementException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				searchButton.click();
 				JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -347,7 +361,6 @@ public class YouTubeAdFree {
 			try {
 				desiredVolumeInPercent = yt.propsReader("desiredVolumeInPercent");
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				desiredVolumeInPercent = String.valueOf(defaultVolume);
 			}
