@@ -1,0 +1,11 @@
+[INFO ] 2023-08-06 04:41:02.663 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-08-06 04:41:02.667 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[ERROR] 2023-08-06 04:41:02.776 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-08-06 04:41:03.325 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-08-06 04:41:03.325 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-08-06 05:14:37.969 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-08-06 05:14:37.972 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-08-06 05:14:47.691 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 6-Aug-2023_05-14-47.png
+[INFO ] 2023-08-06 05:14:47.692 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-08-06 05:14:49.070 [main] YouTubeAdFree - Loading video title from text file: ChuChu TV Numbers Song - NEW Short Version
+[INFO ] 2023-08-06 05:14:49.071 [main] YouTubeAdFree - Loading video by title: ChuChu TV Numbers Song - NEW Short Version
