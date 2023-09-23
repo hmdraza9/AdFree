@@ -27,9 +27,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class YouTubeAdFree {
 
@@ -69,11 +69,9 @@ public class YouTubeAdFree {
 		long tempCurTime = curTime;
 		ChromeOptions opt = new ChromeOptions();
 		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// com.youtube.adfree
-//		opt.addArguments("--headless");
-		ChromeDriverService service = new ChromeDriverService.Builder().withLogOutput(System.out).build();
-//		driver = new ChromeDriver(opt);
+		driver = new ChromeDriver(opt);
 //		driver = new ChromeDriver(service);
-		driver = new FirefoxDriver();
+//		driver = new FirefoxDriver();
 		if (osName.toLowerCase().contains("window")) {
 			printSolution("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");

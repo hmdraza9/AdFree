@@ -110,3 +110,46 @@
 [ERROR] 2023-09-24 00:02:45.926 [main] YouTubeAdFree - Some exception occurred
 [INFO ] 2023-09-24 00:02:57.637 [main] YouTubeAdFree - Driver Quitted due to the exception
 [INFO ] 2023-09-24 00:02:57.637 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-24 01:37:29.051 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-24 01:37:31.755 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-24 01:37:31.756 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-24 01:37:46.240 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 24-Sep-2023_01-37-45.png
+[INFO ] 2023-09-24 01:37:46.240 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-24 01:37:47.967 [main] YouTubeAdFree - Loading video title from text file: Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs
+[INFO ] 2023-09-24 01:37:47.968 [main] YouTubeAdFree - Loading video by title: Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs
+[INFO ] 2023-09-24 01:38:00.986 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-09-24 01:38:06.929 [main] YouTubeAdFree - Current Title: Baby Cat 😻 | Black sheep - #soundvariations Baby songs - Nursery Rhymes & Kids Songs - YouTube
+[INFO ] 2023-09-24 01:38:06.943 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=Otey8Bqff9s
+[INFO ] 2023-09-24 01:38:06.944 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-09-24 01:38:06.945 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[INFO ] 2023-09-24 01:38:07.676 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_24-Sep-2023_01-38-06.png
+[INFO ] 2023-09-24 01:38:07.866 [main] YouTubeAdFree - tempCurTime: 1695499645343; time since current video: 42 seconds;  Current URL: https://www.youtube.com/watch?v=Otey8Bqff9s; previous URL: https://www.youtube.com/watch?v=Otey8Bqff9s
+[INFO ] 2023-09-24 01:38:07.866 [main] YouTubeAdFree - Current time in ms: 1695499687866
+[INFO ] 2023-09-24 01:38:07.866 [main] YouTubeAdFree - Current video start time: 1695499645343
+[INFO ] 2023-09-24 01:38:07.866 [main] YouTubeAdFree - Video change cut off ms: 42523
+[INFO ] 2023-09-24 01:38:07.867 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-24 01:38:07.867 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-24 01:38:32.932 [main] YouTubeAdFree - Start time: 24-Sep-2023_01-38-06; Current time: 24-Sep-2023_01-38-32
+[INFO ] 2023-09-24 01:38:32.932 [main] YouTubeAdFree - Screen time: 1 minutes; 7 seconds;
+[INFO ] 2023-09-24 01:38:32.945 [main] YouTubeAdFree - tempCurTime: 1695499645343; time since current video: 67 seconds;  Current URL: https://www.youtube.com/watch?v=Otey8Bqff9s; previous URL: https://www.youtube.com/watch?v=Otey8Bqff9s
+[INFO ] 2023-09-24 01:38:32.945 [main] YouTubeAdFree - Current time in ms: 1695499712945
+[INFO ] 2023-09-24 01:38:32.946 [main] YouTubeAdFree - Current video start time: 1695499645343
+[INFO ] 2023-09-24 01:38:32.946 [main] YouTubeAdFree - Video change cut off ms: 67603
+[INFO ] 2023-09-24 01:38:32.946 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-24 01:38:32.946 [main] YouTubeAdFree - No video change
+[INFO ] 2023-09-24 01:45:53.311 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-24 01:45:53.314 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-24 01:45:53.314 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-24 01:46:05.704 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 24-Sep-2023_01-46-05.png
+[INFO ] 2023-09-24 01:46:05.704 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-24 01:46:05.799 [main] YouTubeAdFree - Loading video title from text file: Bird Of Paradise Courtship Spectacle
+[INFO ] 2023-09-24 01:46:05.800 [main] YouTubeAdFree - Loading video by title: Bird Of Paradise Courtship Spectacle
+[INFO ] 2023-09-24 01:46:16.125 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-09-24 01:46:22.043 [main] YouTubeAdFree - Current Title: Bird Of Paradise Courtship Spectacle | Planet Earth | BBC Earth - YouTube
+[INFO ] 2023-09-24 01:46:22.054 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=nWfyw51DQfU
+[INFO ] 2023-09-24 01:46:22.055 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-09-24 01:46:22.055 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[WARN ] 2023-09-24 01:46:39.800 [main] YouTubeAdFree - Start time: 24-Sep-2023_01-46-22; Current time: 24-Sep-2023_01-46-39
+[ERROR] 2023-09-24 01:46:39.840 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-09-24 01:46:40.067 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-24 01:46:40.068 [main] YouTubeAdFree - Driver Quitted due to the exception
