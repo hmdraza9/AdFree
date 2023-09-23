@@ -9,3 +9,104 @@
 [INFO ] 2023-08-06 05:14:47.692 [main] YouTubeAdFree - Loading new video...
 [INFO ] 2023-08-06 05:14:49.070 [main] YouTubeAdFree - Loading video title from text file: ChuChu TV Numbers Song - NEW Short Version
 [INFO ] 2023-08-06 05:14:49.071 [main] YouTubeAdFree - Loading video by title: ChuChu TV Numbers Song - NEW Short Version
+[INFO ] 2023-09-23 23:37:25.176 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-23 23:37:25.179 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-23 23:37:25.179 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-23 23:37:42.657 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 23-Sep-2023_23-37-38.png
+[INFO ] 2023-09-23 23:37:42.658 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-23 23:37:49.250 [main] YouTubeAdFree - Loading video title from text file: Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV
+[INFO ] 2023-09-23 23:37:49.252 [main] YouTubeAdFree - Loading video by title: Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV
+[INFO ] 2023-09-23 23:38:12.938 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-09-23 23:38:19.925 [main] YouTubeAdFree - Current Title: Old MacDonald Had A Farm and Many More Nursery Rhymes for Children | Kids Songs by ChuChu TV - YouTube
+[INFO ] 2023-09-23 23:38:19.942 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-09-23 23:38:19.944 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-09-23 23:38:19.944 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[INFO ] 2023-09-23 23:38:22.201 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_23-Sep-2023_23-38-20.png
+[INFO ] 2023-09-23 23:38:23.120 [main] YouTubeAdFree - tempCurTime: 1695492417472; time since current video: 85 seconds;  Current URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0; previous URL: https://www.youtube.com/watch?v=dCIMwwf9Ug0
+[INFO ] 2023-09-23 23:38:23.120 [main] YouTubeAdFree - Current time in ms: 1695492503120
+[INFO ] 2023-09-23 23:38:23.120 [main] YouTubeAdFree - Current video start time: 1695492417472
+[INFO ] 2023-09-23 23:38:23.121 [main] YouTubeAdFree - Video change cut off ms: 85649
+[INFO ] 2023-09-23 23:38:23.121 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-23 23:38:23.121 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-23 23:38:48.143 [main] YouTubeAdFree - Start time: 23-Sep-2023_23-38-19; Current time: 23-Sep-2023_23-38-48
+[INFO ] 2023-09-23 23:38:48.147 [main] YouTubeAdFree - Screen time: 1 minutes; 50 seconds;
+[ERROR] 2023-09-23 23:38:48.937 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-09-23 23:39:01.290 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-23 23:39:01.291 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-23 23:52:32.166 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-23 23:52:32.168 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-23 23:52:32.168 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-23 23:52:40.742 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 23-Sep-2023_23-52-39.png
+[INFO ] 2023-09-23 23:52:40.742 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-23 23:52:41.304 [main] YouTubeAdFree - Loading video title from text file: SCUBA Diving Egypt Red Sea - Underwater Video HD
+[INFO ] 2023-09-23 23:52:41.304 [main] YouTubeAdFree - Loading video by title: SCUBA Diving Egypt Red Sea - Underwater Video HD
+[ERROR] 2023-09-23 23:52:57.360 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-09-23 23:53:00.310 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-23 23:53:00.310 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-23 23:58:10.809 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-23 23:58:10.811 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-23 23:58:10.812 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-23 23:58:35.853 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 23-Sep-2023_23-58-34.png
+[INFO ] 2023-09-23 23:58:35.854 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-23 23:58:36.244 [main] YouTubeAdFree - Loading video title from text file: Living Things | Science Song for Kids | Elementary Life Science
+[INFO ] 2023-09-23 23:58:36.245 [main] YouTubeAdFree - Loading video by title: Living Things | Science Song for Kids | Elementary Life Science
+[INFO ] 2023-09-23 23:59:10.165 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-09-23 23:59:18.144 [main] YouTubeAdFree - Current Title: Living Things | Science Song for Kids | Elementary Life Science | Jack Hartmann - YouTube
+[INFO ] 2023-09-23 23:59:18.150 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=tzN299RpJHA
+[INFO ] 2023-09-23 23:59:18.152 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-09-23 23:59:18.152 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[INFO ] 2023-09-23 23:59:20.026 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_23-Sep-2023_23-59-18.png
+[INFO ] 2023-09-23 23:59:21.155 [main] YouTubeAdFree - tempCurTime: 1695493678099; time since current video: 82 seconds;  Current URL: https://www.youtube.com/watch?v=tzN299RpJHA; previous URL: https://www.youtube.com/watch?v=tzN299RpJHA
+[INFO ] 2023-09-23 23:59:21.156 [main] YouTubeAdFree - Current time in ms: 1695493761156
+[INFO ] 2023-09-23 23:59:21.156 [main] YouTubeAdFree - Current video start time: 1695493678099
+[INFO ] 2023-09-23 23:59:21.156 [main] YouTubeAdFree - Video change cut off ms: 83057
+[INFO ] 2023-09-23 23:59:21.156 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-23 23:59:21.156 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-23 23:59:46.173 [main] YouTubeAdFree - Start time: 23-Sep-2023_23-59-18; Current time: 23-Sep-2023_23-59-46
+[INFO ] 2023-09-23 23:59:46.173 [main] YouTubeAdFree - Screen time: 1 minutes; 48 seconds;
+[INFO ] 2023-09-23 23:59:46.178 [main] YouTubeAdFree - tempCurTime: 1695493678099; time since current video: 108 seconds;  Current URL: https://www.youtube.com/watch?v=tzN299RpJHA; previous URL: https://www.youtube.com/watch?v=tzN299RpJHA
+[INFO ] 2023-09-23 23:59:46.179 [main] YouTubeAdFree - Current time in ms: 1695493786179
+[INFO ] 2023-09-23 23:59:46.179 [main] YouTubeAdFree - Current video start time: 1695493678099
+[INFO ] 2023-09-23 23:59:46.179 [main] YouTubeAdFree - Video change cut off ms: 108080
+[INFO ] 2023-09-23 23:59:46.179 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-23 23:59:46.179 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-24 00:00:11.198 [main] YouTubeAdFree - Start time: 23-Sep-2023_23-59-18; Current time: 24-Sep-2023_00-00-11
+[INFO ] 2023-09-24 00:00:11.199 [main] YouTubeAdFree - Screen time: 2 minutes; 13 seconds;
+[INFO ] 2023-09-24 00:00:11.204 [main] YouTubeAdFree - tempCurTime: 1695493678099; time since current video: 133 seconds;  Current URL: https://www.youtube.com/watch?v=tzN299RpJHA; previous URL: https://www.youtube.com/watch?v=tzN299RpJHA
+[INFO ] 2023-09-24 00:00:11.204 [main] YouTubeAdFree - Current time in ms: 1695493811204
+[INFO ] 2023-09-24 00:00:11.204 [main] YouTubeAdFree - Current video start time: 1695493678099
+[INFO ] 2023-09-24 00:00:11.205 [main] YouTubeAdFree - Video change cut off ms: 133106
+[INFO ] 2023-09-24 00:00:11.205 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-24 00:00:11.205 [main] YouTubeAdFree - No video change
+[INFO ] 2023-09-24 00:01:06.575 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2023-09-24 00:01:06.647 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-09-24 00:01:06.648 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-09-24 00:01:25.156 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 24-Sep-2023_00-01-22.png
+[INFO ] 2023-09-24 00:01:25.156 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-09-24 00:01:25.225 [main] YouTubeAdFree - Loading video title from text file: ABC Song + More Nursery Rhymes
+[INFO ] 2023-09-24 00:01:25.226 [main] YouTubeAdFree - Loading video by title: ABC Song + More Nursery Rhymes
+[INFO ] 2023-09-24 00:01:45.671 [main] YouTubeAdFree - Returned from props: 35
+[INFO ] 2023-09-24 00:01:51.699 [main] YouTubeAdFree - Current Title: ABC Song + More Nursery Rhymes & Kids Songs - CoComelon - YouTube
+[INFO ] 2023-09-24 00:01:51.706 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=71h8MZshGSs
+[INFO ] 2023-09-24 00:01:51.707 [main] YouTubeAdFree - Returned from props: 111
+[INFO ] 2023-09-24 00:01:51.707 [main] YouTubeAdFree - waitBeforeVideoShuffle = 111 mins
+[INFO ] 2023-09-24 00:01:52.365 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_24-Sep-2023_00-01-51.png
+[INFO ] 2023-09-24 00:01:52.737 [main] YouTubeAdFree - tempCurTime: 1695493856635; time since current video: 56 seconds;  Current URL: https://www.youtube.com/watch?v=71h8MZshGSs; previous URL: https://www.youtube.com/watch?v=71h8MZshGSs
+[INFO ] 2023-09-24 00:01:52.739 [main] YouTubeAdFree - Current time in ms: 1695493912739
+[INFO ] 2023-09-24 00:01:52.739 [main] YouTubeAdFree - Current video start time: 1695493856635
+[INFO ] 2023-09-24 00:01:52.739 [main] YouTubeAdFree - Video change cut off ms: 56104
+[INFO ] 2023-09-24 00:01:52.739 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-24 00:01:52.740 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-24 00:02:17.999 [main] YouTubeAdFree - Start time: 24-Sep-2023_00-01-51; Current time: 24-Sep-2023_00-02-17
+[INFO ] 2023-09-24 00:02:17.999 [main] YouTubeAdFree - Screen time: 1 minutes; 21 seconds;
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - tempCurTime: 1695493856635; time since current video: 81 seconds;  Current URL: https://www.youtube.com/watch?v=71h8MZshGSs; previous URL: https://www.youtube.com/watch?v=71h8MZshGSs
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - Current time in ms: 1695493938936
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - Current video start time: 1695493856635
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - Video change cut off ms: 82301
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - Wait before video change value: 6660000
+[INFO ] 2023-09-24 00:02:18.936 [main] YouTubeAdFree - No video change
+[WARN ] 2023-09-24 00:02:45.916 [main] YouTubeAdFree - Start time: 24-Sep-2023_00-01-51; Current time: 24-Sep-2023_00-02-45
+[INFO ] 2023-09-24 00:02:45.917 [main] YouTubeAdFree - Screen time: 1 minutes; 49 seconds;
+[ERROR] 2023-09-24 00:02:45.926 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-09-24 00:02:57.637 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-09-24 00:02:57.637 [main] YouTubeAdFree - Driver Quitted due to the exception

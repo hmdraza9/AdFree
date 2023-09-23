@@ -27,9 +27,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class YouTubeAdFree {
 
@@ -56,7 +56,6 @@ public class YouTubeAdFree {
 			try {
 				yt.freeYoutuber(yt);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				yt.freeYoutuber(yt);
 			}
@@ -73,11 +72,14 @@ public class YouTubeAdFree {
 //		opt.addArguments("--headless");
 		ChromeDriverService service = new ChromeDriverService.Builder().withLogOutput(System.out).build();
 //		driver = new ChromeDriver(opt);
-		driver = new ChromeDriver(service);
+//		driver = new ChromeDriver(service);
+		driver = new FirefoxDriver();
 		if (osName.toLowerCase().contains("window")) {
 			printSolution("Running on operating system: " + osName);
 			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
+			System.setProperty("webdriver.firefox.driver", "C:/all-driver/geckodriver.exe");
 			printSolution("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
+			printSolution("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.firefox.driver"));
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
@@ -304,7 +306,7 @@ public class YouTubeAdFree {
 				txtVideoTitle = tempList.get(0);
 			printSolution("Loading video title from text file: " + txtVideoTitle);
 		} catch (Exception ex) {
-			System.out.println("Exception: " + ex.getMessage());
+			printSolution("Exception: " + ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
 			int tempInt = tempList.size();
 			if (tempInt > 1) {
@@ -328,17 +330,29 @@ public class YouTubeAdFree {
 				searchButton.click();
 				JavascriptExecutor js = (JavascriptExecutor) driver;
 				js.executeScript("arguments[0].click();", searchButton);
+				searchButton.submit();
 				printSolution("Clicked using JavascriptExecutor");
 				Thread.sleep(3000);
 				driver.findElement(By.xpath(searchResultFirst)).click();
 			}
-			driver.findElement(By.xpath(fullScreenVideo)).click();
+			try {
+				driver.findElement(By.xpath(fullScreenVideo)).click();
+			} catch (Exception e) {
+				e.printStackTrace();
+				rb.keyPress(KeyEvent.VK_F);
+			}
 			Thread.sleep(5000);
 		} else {
 			printSolution("Loading video by URL: " + txtVideoTitle);
 			driver.get(txtVideoTitle);
 			Thread.sleep(1000);
-			driver.findElement(By.xpath(fullScreenVideo)).click();
+
+			try {
+				driver.findElement(By.xpath(fullScreenVideo)).click();
+			} catch (Exception e) {
+				e.printStackTrace();
+				rb.keyPress(KeyEvent.VK_F);
+			}
 			Thread.sleep(2000);
 		}
 		yt.controlVolume(driver, rb, 20);
