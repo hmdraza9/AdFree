@@ -138,17 +138,17 @@ public class YouTubeAdFree {
 
 			driver.quit();
 		} catch (InterruptedException e) {
-			log.error("InterruptedException exception occurred");
+			log.error("InterruptedException occurred");
 			e.printStackTrace();
-			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
+			yt.ts(driver, "failedScreen_" + yt.printTime(), "InterruptedException occurred");
 			driver.quit();
-			printSolution("Driver Quitted due to the exception");
+			printSolution("Driver Quitted due to the InterruptedException");
 		} catch (IOException e) {
 			log.error("IO_Exception exception occurred");
 			e.printStackTrace();
-			yt.ts(driver, "failedScreen_" + yt.printTime(), "Some exception occurred");
+			yt.ts(driver, "failedScreen_" + yt.printTime(), "IO_Exception occurred");
 			driver.quit();
-			printSolution("Driver Quitted due to the exception");
+			printSolution("Driver Quitted due to the IO_Exception");
 		} catch (Exception e) {
 			log.error("Some exception occurred");
 			e.printStackTrace();
@@ -156,7 +156,8 @@ public class YouTubeAdFree {
 			printSolution("Driver Quitted due to the exception");
 		} finally {
 			driver.quit();
-			printSolution("Driver Quitted due to the exception");
+//			printSolution("Driver Quitted due to the exception");
+			printSolution(e.getLocalizedMessage());
 		}
 
 	}
