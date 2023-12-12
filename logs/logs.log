@@ -153,3 +153,27 @@
 [ERROR] 2023-09-24 01:46:39.840 [main] YouTubeAdFree - Some exception occurred
 [INFO ] 2023-09-24 01:46:40.067 [main] YouTubeAdFree - Driver Quitted due to the exception
 [INFO ] 2023-09-24 01:46:40.068 [main] YouTubeAdFree - Driver Quitted due to the exception
+[INFO ] 2023-12-10 11:57:41.633 [main] YouTubeAdFree - Running on operating system: Windows 10
+[INFO ] 2023-12-10 11:57:41.669 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-12-10 11:57:41.670 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[INFO ] 2023-12-10 11:58:28.750 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 10-Dec-2023_11-58-21.png
+[INFO ] 2023-12-10 11:58:28.751 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2023-12-10 11:58:30.854 [main] YouTubeAdFree - Loading video title from text file: Alphabets & Vehicles Song I Educational Rhymes I Bindi's Music & Rhymes
+[INFO ] 2023-12-10 11:58:30.854 [main] YouTubeAdFree - Loading video by title: Alphabets & Vehicles Song I Educational Rhymes I Bindi's Music & Rhymes
+[ERROR] 2023-12-10 11:59:42.992 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-12-10 11:59:53.983 [main] YouTubeAdFree - no such window: target window already closed
+[INFO ] 2023-12-10 12:03:41.360 [main] YouTubeAdFree - Running on operating system: Windows 10
+[INFO ] 2023-12-10 12:03:41.368 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-12-10 12:03:41.368 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[ERROR] 2023-12-10 12:03:53.551 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-12-10 12:03:55.219 [main] YouTubeAdFree - no such window: target window already closed
+[INFO ] 2023-12-10 12:10:33.033 [main] YouTubeAdFree - Running on operating system: Windows 10
+[INFO ] 2023-12-10 12:10:33.039 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-12-10 12:10:33.039 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[ERROR] 2023-12-10 12:10:45.488 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-12-10 12:10:46.067 [main] YouTubeAdFree - Exception : no such window: target window already closed||from unknown error: web view not found||  (Session info: chrome=120.0.6099.71)||Build info: version: '4.11.0', revision: '040bc5406b'||System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'||Driver info: org.openqa.selenium.chrome.ChromeDriver||Command: [93f8fb15a2f58f022a57c304d1f1468b, screenshot {}]||Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.71, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\Hp\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50808}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50808/devtoo..., se:cdpVersion: 120.0.6099.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}||Session ID: 93f8fb15a2f58f022a57c304d1f1468b
+[INFO ] 2023-12-10 12:15:35.298 [main] YouTubeAdFree - Running on operating system: Windows 10
+[INFO ] 2023-12-10 12:15:35.342 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/chromedriver.exe
+[INFO ] 2023-12-10 12:15:35.343 [main] YouTubeAdFree - Property set, 'webdriver.chrome.driver': C:/all-driver/geckodriver.exe
+[ERROR] 2023-12-10 12:15:48.346 [main] YouTubeAdFree - Some exception occurred
+[INFO ] 2023-12-10 12:15:48.688 [main] YouTubeAdFree - Exception : no such window: target window already closed||from unknown error: web view not found||  (Session info: chrome=120.0.6099.71)||Build info: version: '4.11.0', revision: '040bc5406b'||System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '20.0.1'||Driver info: org.openqa.selenium.chrome.ChromeDriver||Command: [1a333d54b471dbfafe8503e0caa8c2da, screenshot {}]||Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.71, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\Hp\AppData\Local\T...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50876}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50876/devtoo..., se:cdpVersion: 120.0.6099.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}||Session ID: 1a333d54b471dbfafe8503e0caa8c2da

@@ -28,7 +28,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class YouTubeAdFree {
@@ -142,22 +141,20 @@ public class YouTubeAdFree {
 			e.printStackTrace();
 			yt.ts(driver, "failedScreen_" + yt.printTime(), "InterruptedException occurred");
 			driver.quit();
-			printSolution("Driver Quitted due to the InterruptedException");
+			printSolution("Exception : " + e.getLocalizedMessage().replace("\n", "||"));
 		} catch (IOException e) {
 			log.error("IO_Exception exception occurred");
 			e.printStackTrace();
 			yt.ts(driver, "failedScreen_" + yt.printTime(), "IO_Exception occurred");
 			driver.quit();
-			printSolution("Driver Quitted due to the IO_Exception");
+			printSolution("Exception : " + e.getLocalizedMessage().replace("\n", "||"));
 		} catch (Exception e) {
 			log.error("Some exception occurred");
 			e.printStackTrace();
 			driver.quit();
-			printSolution("Driver Quitted due to the exception");
+			printSolution("Exception : " + e.getLocalizedMessage().replace("\n", "||"));
 		} finally {
 			driver.quit();
-//			printSolution("Driver Quitted due to the exception");
-			printSolution(e.getLocalizedMessage());
 		}
 
 	}
