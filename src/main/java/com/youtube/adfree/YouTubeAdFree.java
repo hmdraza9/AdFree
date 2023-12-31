@@ -219,25 +219,22 @@ public class YouTubeAdFree {
 	public static ArrayList<String> randomizeVideoTitle() {
 
 		ArrayList<String> videoTitleList = new ArrayList<String>();
-		videoTitleList.add("Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs");
-		videoTitleList.add("Omar & Hana I 40 minutes compilation of series   I Islamic Cartoons");
-		videoTitleList
-				.add("Durood Ibrahim Song (Allah Humma Salli) + More   Islamic Songs For Kids Compilation I Nasheed");
-		videoTitleList.add(
-				"Old MacDonald Had A Farm and Many More   Nursery Rhymes for Children I Kids Songs by   ChuChu TV");
-		videoTitleList.add("The Best Alhamdulilah Song + More Islamic Songs for kids Compilation I Nasheed");
-		videoTitleList.add("ABC Song with ChuChu Toy Train");
-		videoTitleList.add("Baby Loves Stargazing - Twinkle Twinkle Little Star");
-		videoTitleList.add("ABC Song + More Nursery Rhymes");
-		videoTitleList.add("Phonics Song, Learn Abc and Preschool Rhymes for Kids");
-		videoTitleList.add("Phonics Song with TWO Words - A For Apple - ABC Alphabet Songs");
-		videoTitleList.add("ChuChu TV Numbers Song - NEW Short Version");
+		videoTitleList.add("https://www.youtube.com/watch?v=136P-4EfryA");
+		videoTitleList.add("https://www.youtube.com/watch?v=Si5auXCYWDI");
+		videoTitleList.add("https://www.youtube.com/watch?v=ZarMVS7MQSk");
+		videoTitleList.add("https://www.youtube.com/watch?v=WJQJQrbsuIE");
+		videoTitleList.add("Masha and the Bear");
+		videoTitleList.add("https://www.youtube.com/watch?v=r9i1sR2Q9GE");
+		videoTitleList.add("https://www.youtube.com/watch?v=VXAKb1lagw4");
+		videoTitleList.add("https://www.youtube.com/watch?v=aaqZZdbDA3Y");
+		videoTitleList.add("https://www.youtube.com/watch?v=cGM_VhNXMmo");
+		videoTitleList.add("Masha and the Bear");
+		videoTitleList.add("Masha and the Bear");
+		videoTitleList.add("https://www.youtube.com/watch?v=mbv63Lz2vAw");
+		videoTitleList.add("https://www.youtube.com/watch?v=mbv63Lz2vAw");
 		videoTitleList.add("Number song 1-20 for children | Counting numbers | The Singing Walrus");
-		videoTitleList.add("Living Things | Science Song for Kids | Elementary Life Science");
-		videoTitleList.add("The Seed Song - What Do Seeds Need?");
-		videoTitleList.add("Fish Vs Bird | 4KUHD | Blue Planet II | BBC Earth");
-		videoTitleList.add("Bird Of Paradise Courtship Spectacle");
-		videoTitleList.add("SCUBA Diving Egypt Red Sea - Underwater Video HD");
+		videoTitleList.add("Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs");
+
 
 		Collections.shuffle(videoTitleList);
 
