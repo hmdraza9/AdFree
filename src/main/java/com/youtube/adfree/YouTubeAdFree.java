@@ -21,6 +21,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -29,11 +30,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 
 public class YouTubeAdFree {
 
+//	add code for
+//	playing video
+//	from channels
+//	list of channels:https:// www.youtube.com/@PBSKIDS
+//	https:// www.youtube.com/@natgeokids
+//	https:// www.youtube.com/@artforkidshub
+//	https:// www.youtube.com/@KidVideos
+//	https:// www.youtube.com/@kidshut
+//	https:// www.youtube.com/@Blippi
+
 	private static final Logger log = LogManager.getLogger(YouTubeAdFree.class);
 	static YouTubeAdFree yt = new YouTubeAdFree();
+	File file;
 	public static String currentURL;
 	public static int currentHour;
 	public static int currentMin;
@@ -47,6 +60,8 @@ public class YouTubeAdFree {
 	public static String searchIcon = "//button[contains(@id,'search-icon')]";
 	public static String searchResultFirst = "(//a[@id='video-title'])[1]";
 	public static String fullScreenVideo = "//button[contains(@title,'ull screen')]";
+	public static String ytChannelTabXpath = "//div[@id='tabsContent']//*[@role='tab']//div[text()='$tab']";
+	public static String ytChannelLatestVideoXpath = "//div[@id='player-container']/parent::*/div[@id='content']//div[@id='metadata-container']//a";
 
 	static WebDriver driver;
 
@@ -69,14 +84,8 @@ public class YouTubeAdFree {
 		ChromeOptions opt = new ChromeOptions();
 		opt.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));// com.youtube.adfree
 		driver = new ChromeDriver(opt);
-//		driver = new ChromeDriver(service);
-//		driver = new FirefoxDriver();
 		if (osName.toLowerCase().contains("window")) {
 			printSolution("Running on operating system: " + osName);
-			System.setProperty("webdriver.chrome.driver", "C:/all-driver/chromedriver.exe");
-			System.setProperty("webdriver.firefox.driver", "C:/all-driver/geckodriver.exe");
-			printSolution("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.chrome.driver"));
-			printSolution("Property set, 'webdriver.chrome.driver': " + System.getProperty("webdriver.firefox.driver"));
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
@@ -164,12 +173,24 @@ public class YouTubeAdFree {
 		ArrayList<String> lineList = new ArrayList<String>();
 		String tempFilePath = "";
 		String currUser = System.getProperty("user.name");
-		if (currUser.contains("hmd")) {
-			tempFilePath = "C:/Users/" + currUser + "/Desktop/YouTubeForKids.txt";
-		} else
-			tempFilePath = "C:/Users/Hp/Desktop/YouTubeForKids.txt";
 
-		File file = new File(tempFilePath);
+		tempFilePath = "src/test/resources/YouTubeForKids.txt";
+
+		file = new File(tempFilePath);
+
+		if (!file.exists()) {
+			log.info("Getting title from C:User location file.");
+			if (currUser.contains("hmd")) {
+				tempFilePath = "C:/Users/" + currUser + "/Desktop/YouTubeForKids.txt";
+			} else {
+				tempFilePath = "C:/Users/Hp/Desktop/YouTubeForKids.txt";
+				file = new File(tempFilePath);
+			}
+
+		} else {
+			log.info("Getting title from project file.");
+			file = new File(tempFilePath);
+		}
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -235,7 +256,6 @@ public class YouTubeAdFree {
 		videoTitleList.add("Number song 1-20 for children | Counting numbers | The Singing Walrus");
 		videoTitleList.add("Baby Cat I Black sheep #soundvariations -   Baby songs - Nursery Rhymes & Kids Songs");
 
-
 		Collections.shuffle(videoTitleList);
 
 		return videoTitleList;
@@ -294,10 +314,10 @@ public class YouTubeAdFree {
 			tempList = yt.readTextFile();
 			int tempInt = tempList.size();
 			if (tempInt > 1) {
-				txtVideoTitle = yt.readTextFile().get(tempInt / 2 + 1);
+				txtVideoTitle = tempList.get(tempInt / 2 + 1);
 			} else
 				txtVideoTitle = tempList.get(0);
-			printSolution("Loading video title from text file: " + txtVideoTitle);
+			printSolution("Loading video title from file: " + txtVideoTitle);
 		} catch (Exception ex) {
 			printSolution("Exception: " + ex.getMessage());
 			ArrayList<String> tempList = randomizeVideoTitle();
@@ -338,10 +358,16 @@ public class YouTubeAdFree {
 		} else {
 			printSolution("Loading video by URL: " + txtVideoTitle);
 			driver.get(txtVideoTitle);
+
+			playChannelVideo(driver, txtVideoTitle, rb);
+
 			Thread.sleep(1000);
 
 			try {
 				driver.findElement(By.xpath(fullScreenVideo)).click();
+			} catch (ElementNotInteractableException eni) {
+				Actions action = new Actions(driver);
+				action.click(driver.findElement(By.xpath(fullScreenVideo)));
 			} catch (Exception e) {
 				e.printStackTrace();
 				rb.keyPress(KeyEvent.VK_F);
@@ -354,10 +380,22 @@ public class YouTubeAdFree {
 		currentURL = driver.getCurrentUrl();
 	}
 
+	public static void playChannelVideo(WebDriver driver, String txtChannelUrl, Robot rb) {
+
+		if (txtChannelUrl.contains("www.youtube.com/@")) {
+
+			log.info("Loading channel: " + txtChannelUrl.substring(25) + "'s latest video");
+			driver.findElement(By.xpath(ytChannelTabXpath.replace("$tab", "Home"))).click();
+			driver.findElement(By.xpath(ytChannelLatestVideoXpath)).click();
+			rb.keyPress(KeyEvent.VK_F);
+		}
+
+	}
+
 	public void controlVolume(WebDriver driver, Robot rb, int defaultVolume) {
 
 		try {
-			driver.findElement(By.xpath(videoScreen)).click();
+			rb.keyPress(KeyEvent.VK_F);
 			for (int i = 0; i < 20; i++) {
 				rb.keyPress(KeyEvent.VK_DOWN);
 				Thread.sleep(100);
@@ -375,7 +413,7 @@ public class YouTubeAdFree {
 				Thread.sleep(100);
 			}
 
-			driver.findElement(By.xpath(videoScreen)).click();
+//			driver.findElement(By.xpath(videoScreen)).click();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -384,7 +422,7 @@ public class YouTubeAdFree {
 	public static void printSolution(String toPrint) {
 
 		log.info(toPrint);
-		System.out.println(toPrint);
+//		System.out.println(toPrint);
 
 	}
 
