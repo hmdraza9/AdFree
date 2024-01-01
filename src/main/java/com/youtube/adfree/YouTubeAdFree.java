@@ -33,17 +33,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 public class YouTubeAdFree {
-
-//	add code for
-//	playing video
-//	from channels
-//	list of channels:https:// www.youtube.com/@PBSKIDS
-//	https:// www.youtube.com/@natgeokids
-//	https:// www.youtube.com/@artforkidshub
-//	https:// www.youtube.com/@KidVideos
-//	https:// www.youtube.com/@kidshut
-//	https:// www.youtube.com/@Blippi
-
 	private static final Logger log = LogManager.getLogger(YouTubeAdFree.class);
 	static YouTubeAdFree yt = new YouTubeAdFree();
 	File file;
