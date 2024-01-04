@@ -3758,3 +3758,120 @@
 [INFO ] 2024-01-04 19:47:51.187 [main] YouTubeAdFree - Clicking 'Skip ad', count: 1 scr name: 0_4-Jan-2024_19-47-50.png
 [ERROR] 2024-01-04 19:47:52.375 [main] YouTubeAdFree - Some exception occurred
 [INFO ] 2024-01-04 19:47:52.625 [main] YouTubeAdFree - Exception : element click intercepted: Element <button class="ytp-ad-skip-button-modern ytp-button">...</button> is not clickable at point (957, 18). Other element would receive the click: <input id="search" autocapitalize="none" autocomplete="off" autocorrect="off" name="search_query" tabindex="0" type="text" spellcheck="false" placeholder="Search" aria-label="Search">||  (Session info: chrome=120.0.6099.130)||Build info: version: '4.11.0', revision: '040bc5406b'||System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.9'||Driver info: org.openqa.selenium.chrome.ChromeDriver||Command: [9f18dfd55b65d6c5c37f84c69a45c4ca, clickElement {id=D174FC5403216CB1AD74810690CD8344_element_127}]||Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.130, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\HAMID_~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59148}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59148/devtoo..., se:cdpVersion: 120.0.6099.130, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}||Element: [[ChromeDriver: chrome on windows (9f18dfd55b65d6c5c37f84c69a45c4ca)] -> xpath: //div[contains(@id,'ad-text') and contains(text(),'Skip')]/parent::button]||Session ID: 9f18dfd55b65d6c5c37f84c69a45c4ca
+[INFO ] 2024-01-04 19:48:21.471 [main] YouTubeAdFree - Running on operating system: Windows 11
+[INFO ] 2024-01-04 19:48:30.376 [main] YouTubeAdFree - Opening URL: https://www.youtube.com scr name: 4-Jan-2024_19-48-29.png
+[INFO ] 2024-01-04 19:48:30.376 [main] YouTubeAdFree - Loading new video...
+[INFO ] 2024-01-04 19:48:30.473 [main] YouTubeAdFree - Getting title from project file
+[INFO ] 2024-01-04 19:48:30.475 [main] YouTubeAdFree - Loading video title from file: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:48:30.475 [main] YouTubeAdFree - Loading video by URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:48:30.475 [main] YouTubeAdFree - Channel's latest video, URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:48:39.726 [main] YouTubeAdFree - Current Title: Molly of Denali | Molly Moves: Whip, Shake, Slide | PBS KIDS - YouTube
+[INFO ] 2024-01-04 19:48:39.741 [main] YouTubeAdFree - Current URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:48:39.741 [main] YouTubeAdFree - Properties file not found at: C:/all-props/config.properties
+[INFO ] 2024-01-04 19:48:39.742 [main] YouTubeAdFree - C:\all-props\config.properties (The system cannot find the path specified)
+[INFO ] 2024-01-04 19:48:39.742 [main] YouTubeAdFree - Looking for file at - src/test/resources/config.properties
+[INFO ] 2024-01-04 19:48:39.743 [main] YouTubeAdFree - waitBeforeVideoShuffle = 30 mins
+[WARN ] 2024-01-04 19:49:04.814 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-49-04
+[INFO ] 2024-01-04 19:49:04.833 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 43 seconds;  Current URL: https://www.youtube.com/watch?v=VXAKb1lagw4; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:49:04.834 [main] YouTubeAdFree - Current time in ms: 1704377944834
+[INFO ] 2024-01-04 19:49:04.834 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:49:04.834 [main] YouTubeAdFree - Video change cut off ms: 43366
+[INFO ] 2024-01-04 19:49:04.834 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:49:04.835 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:49:29.859 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-49-29
+[INFO ] 2024-01-04 19:49:29.859 [main] YouTubeAdFree - Screen time: 1 minutes; 8 seconds;
+[INFO ] 2024-01-04 19:49:29.875 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 68 seconds;  Current URL: https://www.youtube.com/watch?v=VXAKb1lagw4; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:49:29.878 [main] YouTubeAdFree - Current time in ms: 1704377969878
+[INFO ] 2024-01-04 19:49:29.878 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:49:29.878 [main] YouTubeAdFree - Video change cut off ms: 68410
+[INFO ] 2024-01-04 19:49:29.878 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:49:29.878 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:49:54.902 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-49-54
+[INFO ] 2024-01-04 19:49:54.902 [main] YouTubeAdFree - Screen time: 1 minutes; 33 seconds;
+[INFO ] 2024-01-04 19:49:54.916 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 93 seconds;  Current URL: https://www.youtube.com/watch?v=VXAKb1lagw4; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:49:54.916 [main] YouTubeAdFree - Current time in ms: 1704377994916
+[INFO ] 2024-01-04 19:49:54.916 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:49:54.917 [main] YouTubeAdFree - Video change cut off ms: 93449
+[INFO ] 2024-01-04 19:49:54.917 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:49:54.918 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:50:19.997 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-50-19
+[INFO ] 2024-01-04 19:50:19.997 [main] YouTubeAdFree - Screen time: 1 minutes; 58 seconds;
+[INFO ] 2024-01-04 19:50:20.016 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 118 seconds;  Current URL: https://www.youtube.com/watch?v=VXAKb1lagw4; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:50:20.016 [main] YouTubeAdFree - Current time in ms: 1704378020016
+[INFO ] 2024-01-04 19:50:20.016 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:50:20.017 [main] YouTubeAdFree - Video change cut off ms: 118549
+[INFO ] 2024-01-04 19:50:20.017 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:50:20.017 [main] YouTubeAdFree - No video change
+[INFO ] 2024-01-04 19:50:29.909 [main] YouTubeAdFree - Clicking 'Skip ad', count: 5 scr name: 4_4-Jan-2024_19-50-29.png
+[INFO ] 2024-01-04 19:50:34.225 [main] YouTubeAdFree - Skip Ad button clicked
+[INFO ] 2024-01-04 19:50:34.225 [main] YouTubeAdFree - Screen time: 2 minutes; 12 seconds;
+[INFO ] 2024-01-04 19:50:34.246 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 132 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:50:34.247 [main] YouTubeAdFree - Current time in ms: 1704378034247
+[INFO ] 2024-01-04 19:50:34.247 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:50:34.247 [main] YouTubeAdFree - Video change cut off ms: 132779
+[INFO ] 2024-01-04 19:50:34.247 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:50:34.247 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:50:59.317 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-50-59
+[INFO ] 2024-01-04 19:50:59.317 [main] YouTubeAdFree - Screen time: 2 minutes; 37 seconds;
+[INFO ] 2024-01-04 19:50:59.331 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 157 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:50:59.331 [main] YouTubeAdFree - Current time in ms: 1704378059331
+[INFO ] 2024-01-04 19:50:59.331 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:50:59.332 [main] YouTubeAdFree - Video change cut off ms: 157864
+[INFO ] 2024-01-04 19:50:59.332 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:50:59.332 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:51:24.365 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-51-24
+[INFO ] 2024-01-04 19:51:24.365 [main] YouTubeAdFree - Screen time: 3 minutes; 2 seconds;
+[INFO ] 2024-01-04 19:51:24.379 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 182 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:51:24.379 [main] YouTubeAdFree - Current time in ms: 1704378084379
+[INFO ] 2024-01-04 19:51:24.379 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:51:24.380 [main] YouTubeAdFree - Video change cut off ms: 182912
+[INFO ] 2024-01-04 19:51:24.380 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:51:24.381 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:51:49.434 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-51-49
+[INFO ] 2024-01-04 19:51:49.434 [main] YouTubeAdFree - Screen time: 3 minutes; 27 seconds;
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 207 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - Current time in ms: 1704378109442
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - Video change cut off ms: 207974
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:51:49.442 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:52:14.467 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-52-14
+[INFO ] 2024-01-04 19:52:14.467 [main] YouTubeAdFree - Screen time: 3 minutes; 52 seconds;
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 232 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - Current time in ms: 1704378134483
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - Video change cut off ms: 233015
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:52:14.483 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:52:39.550 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-52-39
+[INFO ] 2024-01-04 19:52:39.550 [main] YouTubeAdFree - Screen time: 4 minutes; 18 seconds;
+[INFO ] 2024-01-04 19:52:39.565 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 258 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:52:39.566 [main] YouTubeAdFree - Current time in ms: 1704378159566
+[INFO ] 2024-01-04 19:52:39.566 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:52:39.566 [main] YouTubeAdFree - Video change cut off ms: 258098
+[INFO ] 2024-01-04 19:52:39.566 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:52:39.566 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:53:04.589 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-53-04
+[INFO ] 2024-01-04 19:53:04.589 [main] YouTubeAdFree - Screen time: 4 minutes; 43 seconds;
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 283 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - Current time in ms: 1704378184604
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - Video change cut off ms: 283136
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:53:04.604 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:53:29.654 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-53-29
+[INFO ] 2024-01-04 19:53:29.654 [main] YouTubeAdFree - Screen time: 5 minutes; 8 seconds;
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 308 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - Current time in ms: 1704378209659
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - Video change cut off ms: 308191
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:53:29.659 [main] YouTubeAdFree - No video change
+[WARN ] 2024-01-04 19:53:54.756 [main] YouTubeAdFree - Start time: 4-Jan-2024_19-48-39; Current time: 4-Jan-2024_19-53-54
+[INFO ] 2024-01-04 19:53:54.758 [main] YouTubeAdFree - Screen time: 5 minutes; 33 seconds;
+[INFO ] 2024-01-04 19:53:54.775 [main] YouTubeAdFree - tempCurTime: 1704377901468; time since current video: 333 seconds;  Current URL: https://www.youtube.com/watch?v=XWDHBrkYsgA; previous URL: https://www.youtube.com/watch?v=VXAKb1lagw4
+[INFO ] 2024-01-04 19:53:54.775 [main] YouTubeAdFree - Current time in ms: 1704378234775
+[INFO ] 2024-01-04 19:53:54.776 [main] YouTubeAdFree - Current video start time: 1704377901468
+[INFO ] 2024-01-04 19:53:54.776 [main] YouTubeAdFree - Video change cut off ms: 333308
+[INFO ] 2024-01-04 19:53:54.776 [main] YouTubeAdFree - Wait before video change value: 1800000
+[INFO ] 2024-01-04 19:53:54.776 [main] YouTubeAdFree - No video change
